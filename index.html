@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrián Martín | DAW Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body class="nier-theme">
+
+    <!-- FONDO TÉCNICO // 4 ENGRANAJES INTERCONECTADOS -->
+    <div class="nier-bg-decor-container" aria-hidden="true">
+
+        <!-- Engranaje 1: Principal grande (centro-izquierda) -->
+        <div class="gear-wrapper gear-main">
+            <svg viewBox="0 0 800 800" class="gear-svg rotate-clockwise">
+                <circle cx="400" cy="400" r="380" class="ring thin dashed" />
+                <circle cx="400" cy="400" r="350" class="ring solid" />
+                <circle cx="400" cy="400" r="280" class="ring thin" />
+                <circle cx="400" cy="400" r="220" class="ring dashed-wide" />
+                <circle cx="400" cy="400" r="140" class="ring solid" />
+                <circle cx="400" cy="400" r="40" class="ring thin" />
+                <g class="spokes">
+                    <line x1="400" y1="20" x2="400" y2="780" />
+                    <line x1="20" y1="400" x2="780" y2="400" />
+                    <line x1="131" y1="131" x2="669" y2="669" />
+                    <line x1="131" y1="669" x2="669" y2="131" />
+                    <line x1="260" y1="55" x2="540" y2="745" />
+                    <line x1="55" y1="260" x2="745" y2="540" />
+                </g>
+                <circle cx="400" cy="400" r="365" class="ring gear-teeth" />
+            </svg>
+        </div>
+
+        <!-- Engranaje 2: Mediano (flanco derecho) -->
+        <div class="gear-wrapper gear-top-right">
+            <svg viewBox="0 0 800 800" class="gear-svg rotate-counter">
+                <circle cx="400" cy="400" r="360" class="ring thin dashed" />
+                <circle cx="400" cy="400" r="310" class="ring solid" />
+                <circle cx="400" cy="400" r="230" class="ring dashed-wide" />
+                <circle cx="400" cy="400" r="110" class="ring solid" />
+                <g class="spokes">
+                    <line x1="400" y1="40" x2="400" y2="760" />
+                    <line x1="40" y1="400" x2="760" y2="400" />
+                    <line x1="150" y1="150" x2="650" y2="650" />
+                    <line x1="150" y1="650" x2="650" y2="150" />
+                </g>
+                <circle cx="400" cy="400" r="340" class="ring gear-teeth" />
+            </svg>
+        </div>
+
+        <!-- Engranaje 3: Pequeño (zona superior central) -->
+        <div class="gear-wrapper gear-bottom-left">
+            <svg viewBox="0 0 800 800" class="gear-svg rotate-clockwise-fast">
+                <circle cx="400" cy="400" r="370" class="ring solid" />
+                <circle cx="400" cy="400" r="270" class="ring thin dashed" />
+                <circle cx="400" cy="400" r="160" class="ring dashed-wide" />
+                <circle cx="400" cy="400" r="60" class="ring solid" />
+                <g class="spokes">
+                    <line x1="400" y1="30" x2="400" y2="770" />
+                    <line x1="30" y1="400" x2="770" y2="400" />
+                </g>
+                <circle cx="400" cy="400" r="350" class="ring gear-teeth" />
+            </svg>
+        </div>
+
+        <!-- Engranaje 4: Grande inferior derecho -->
+        <div class="gear-wrapper gear-bottom-right">
+            <svg viewBox="0 0 800 800" class="gear-svg rotate-counter-slow">
+                <circle cx="400" cy="400" r="380" class="ring thin dashed" />
+                <circle cx="400" cy="400" r="340" class="ring solid" />
+                <circle cx="400" cy="400" r="290" class="ring thin" />
+                <circle cx="400" cy="400" r="210" class="ring dashed-wide" />
+                <circle cx="400" cy="400" r="120" class="ring solid" />
+                <circle cx="400" cy="400" r="50" class="ring thin" />
+                <g class="spokes">
+                    <line x1="400" y1="20" x2="400" y2="780" />
+                    <line x1="20" y1="400" x2="780" y2="400" />
+                    <line x1="131" y1="131" x2="669" y2="669" />
+                    <line x1="131" y1="669" x2="669" y2="131" />
+                </g>
+                <circle cx="400" cy="400" r="360" class="ring gear-teeth" />
+            </svg>
+        </div>
+
+        <!-- Engranaje 5: Pequeño central (entre el panel principal y la tarjeta de estado) -->
+        <div class="gear-wrapper gear-mid-center">
+            <svg viewBox="0 0 800 800" class="gear-svg rotate-counter-fast">
+                <circle cx="400" cy="400" r="370" class="ring solid" />
+                <circle cx="400" cy="400" r="280" class="ring thin dashed" />
+                <circle cx="400" cy="400" r="190" class="ring dashed-wide" />
+                <circle cx="400" cy="400" r="80"  class="ring solid" />
+                <g class="spokes">
+                    <line x1="400" y1="30" x2="400" y2="770" />
+                    <line x1="30" y1="400" x2="770" y2="400" />
+                    <line x1="140" y1="140" x2="660" y2="660" />
+                    <line x1="140" y1="660" x2="660" y2="140" />
+                </g>
+                <circle cx="400" cy="400" r="350" class="ring gear-teeth" />
+            </svg>
+        </div>
+
+    </div>
+
+    <div id="app" class="nier-screen">
+
+        <!-- ENCABEZADO SUPERIOR -->
+        <header class="nier-header">
+            <nav class="nier-nav">
+                <ul class="nav-list">
+                    <li>
+                        <button class="nav-btn" :class="{ active: seccionActiva === 'sobre-mi' }"
+                            @click="cambiarSeccion('sobre-mi')">
+                            <span class="icon">⬢</span> SOBRE MÍ
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" :class="{ active: seccionActiva === 'stack' }"
+                            @click="cambiarSeccion('stack')">
+                            <span class="icon">⬢</span> STACK TECNOLÓGICO
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" :class="{ active: seccionActiva === 'proyectos' }"
+                            @click="cambiarSeccion('proyectos')">
+                            <span class="icon">⬢</span> PROYECTOS
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" :class="{ active: seccionActiva === 'contacto' }"
+                            @click="cambiarSeccion('contacto')">
+                            <span class="icon">⬢</span> CONTÁCTAME
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Banda decorativa de triángulos de NieR -->
+            <div class="nier-divider">
+                <span class="dots-triangles">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾
+                    ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</span>
+            </div>
+
+            <!-- Título de sección activa con subtítulo -->
+            <div class="section-indicator">
+                <h1 class="main-title">{{ tituloActual }}</h1>
+                <span class="sub-kanji">{{ kanjiActual }}</span>
+            </div>
+        </header>
+
+        <!-- CUERPO PRINCIPAL EN COLUMNAS -->
+        <div class="nier-workspace">
+
+            <!-- CONTENEDOR CENTRAL: MÁSCARA DEL SLIDER -->
+            <main class="nier-main-container">
+
+                <!-- Pista deslizante vertical que contiene TODAS las secciones -->
+                <div class="slider-track" :style="{ transform: `translateY(-${indiceActivo * 100}%)` }">
+
+                    <!-- SECCIÓN 1: SOBRE MÍ -->
+                    <section class="content-panel slide-item">
+                        <div class="panel-header-bar">
+                            <span>REGISTRO PERSONAL // OPERADOR</span>
+                            <span class="panel-tag">ID: AM-2026</span>
+                        </div>
+                        <div class="panel-body">
+                            <h3>ADRIÁN MARTÍN</h3>
+                            <p class="role-subtitle">Desarrollador Backend | Estudiante DAW</p>
+                            <hr class="nier-subline">
+                            <p>Especializado en lógica de negocio, arquitectura orientada a servicios y persistencia de
+                                datos. Enfocado en construir APIs robustas, limpias y eficientes con el ecosistema Java.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- SECCIÓN 2: STACK -->
+                    <section class="content-panel slide-item">
+                        <div class="panel-header-bar">
+                            <span>ARMAMENTO // TECNOLOGÍAS ACTIVAS</span>
+                            <span class="panel-tag">TOTAL: {{ tecnologias.length }}</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="stack-accordion">
+                                <div v-for="tech in tecnologias" :key="tech.id" class="stack-card"
+                                    :class="{ selected: stackSeleccionado === tech.id }">
+
+                                    <!-- Cabecera clickeable de la opción -->
+                                    <div class="stack-header" @click="toggleStack(tech.id)">
+                                        <div class="tech-title">
+                                            <span class="tech-indicator">⬢</span>
+                                            <span>{{ tech.nombre }}</span>
+                                        </div>
+                                        <strong class="tech-badge">[{{ tech.tag }}]</strong>
+                                    </div>
+
+                                    <!-- Panel desplegable con la explicación -->
+                                    <div v-if="stackSeleccionado === tech.id" class="stack-details">
+                                        <div class="details-inner">
+                                            <span class="details-label">// LOG DE EXPERIENCIA:</span>
+                                            <p>{{ tech.descripcion }}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SECCIÓN 3: PROYECTOS -->
+                    <section class="content-panel slide-item">
+                        <div class="panel-header-bar">
+                            <span>REGISTRO DE MISIONES // PROYECTOS</span>
+                            <span class="panel-tag">TOTAL: 03</span>
+                        </div>
+                        <div class="panel-body">
+                            <p>Aquí puedes listar tus proyectos o repositorios de GitHub con estilo de informe de
+                                combate.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- SECCIÓN 4: CONTACTO -->
+                    <section class="content-panel slide-item">
+                        <div class="panel-header-bar">
+                            <span>ENLACE DE TRANSMISIÓN // CONTACTO</span>
+                            <span class="panel-tag">FREQ: +34</span>
+                        </div>
+                        <div class="panel-body">
+                            <p>Canales abiertos para consultas y oportunidades laborales.</p>
+                        </div>
+                    </section>
+
+                </div>
+
+            </main>
+
+            <!-- COLUMNA DERECHA: TARJETA DE ESTADO / PERFIL (Al lado del main) -->
+            <aside class="nier-status-card">
+                <div class="status-card-header">
+                    <span>STATUS OVERVIEW</span>
+                </div>
+
+                <div class="status-card-body">
+                    <div class="status-top">
+                        <h2 class="operator-name">ADRIÁN MARTÍN</h2>
+                        <span class="operator-lvl">Lv: 99</span>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-label">ROL:</span>
+                        <span class="stat-value">BACKEND DEV</span>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-label">EXP:</span>
+                        <span class="stat-value">999999</span>
+                    </div>
+
+                    <div class="stat-row hp-row">
+                        <span class="stat-label">HP:</span>
+                        <div class="hp-bar-container">
+                            <div class="hp-bar-fill"></div>
+                        </div>
+                        <span class="stat-value">100 / 100</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- FOOTER INFERIOR -->
+        <footer class="nier-footer">
+            <div class="footer-msg">
+                <span class="cursor-bar"></span>
+                <p>MÓDULO SELECCIONADO: {{ tituloActual }}</p>
+            </div>
+            <div class="footer-controls">
+                <span>⬡ SELECCIONAR</span>
+                <span>◯ CONFIRMAR</span>
+                <span>✕ SALIR</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
