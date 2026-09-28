@@ -138,7 +138,7 @@
                 </ul>
             </nav>
 
-            <!-- Banda decorativa de triángulos de NieR -->
+            <!-- Banda decorativa de triángulos -->
             <div class="nier-divider">
                 <span class="dots-triangles">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾
                     ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</span>
@@ -179,7 +179,7 @@
                     <!-- SECCIÓN 2: STACK -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>ARMAMENTO // TECNOLOGÍAS ACTIVAS</span>
+                            <span>TECNOLOGÍAS </span>
                             <span class="panel-tag">TOTAL: {{ tecnologias.length }}</span>
                         </div>
                         <div class="panel-body">
@@ -199,7 +199,7 @@
                                     <!-- Panel desplegable con la explicación -->
                                     <div v-if="stackSeleccionado === tech.id" class="stack-details">
                                         <div class="details-inner">
-                                            <span class="details-label">// LOG DE EXPERIENCIA:</span>
+                                            <span class="details-label">EXPERIENCIA:</span>
                                             <p>{{ tech.descripcion }}</p>
                                         </div>
                                     </div>
@@ -237,7 +237,7 @@
 
             </main>
 
-            <!-- COLUMNA DERECHA: TARJETA DE ESTADO / PERFIL (Al lado del main) -->
+            <!-- COLUMNA DERECHA: TARJETA DE ESTADO -->
             <aside class="nier-status-card">
                 <div class="status-card-header">
                     <span>STATUS OVERVIEW</span>

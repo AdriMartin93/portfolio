@@ -344,7 +344,7 @@ body.nier-theme::before {
 
 .gear-wrapper {
   position: absolute;
-  opacity: 0.18; /* Opacidad reforzada: visible y definida sin molestar */
+  opacity: 0.18; 
 }
 
 /* 1. CUADRANTE CENTRO-IZQUIERDA (Engranaje principal grande) */
