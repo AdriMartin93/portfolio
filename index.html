@@ -92,7 +92,7 @@
                 <circle cx="400" cy="400" r="370" class="ring solid" />
                 <circle cx="400" cy="400" r="280" class="ring thin dashed" />
                 <circle cx="400" cy="400" r="190" class="ring dashed-wide" />
-                <circle cx="400" cy="400" r="80"  class="ring solid" />
+                <circle cx="400" cy="400" r="80" class="ring solid" />
                 <g class="spokes">
                     <line x1="400" y1="30" x2="400" y2="770" />
                     <line x1="30" y1="400" x2="770" y2="400" />
@@ -163,7 +163,7 @@
                     <!-- SECCIÓN 1: SOBRE MÍ -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>REGISTRO PERSONAL // OPERADOR</span>
+                            <span>REGISTRO PERSONAL </span>
                             <span class="panel-tag">ID: AM-2026</span>
                         </div>
                         <div class="panel-body">
@@ -212,7 +212,7 @@
                     <!-- SECCIÓN 3: PROYECTOS -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>REGISTRO DE MISIONES // PROYECTOS</span>
+                            <span>PROYECTOS</span>
                             <span class="panel-tag">TOTAL: 03</span>
                         </div>
                         <div class="panel-body">
@@ -225,11 +225,95 @@
                     <!-- SECCIÓN 4: CONTACTO -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>ENLACE DE TRANSMISIÓN // CONTACTO</span>
-                            <span class="panel-tag">FREQ: +34</span>
+                            <span>CONTACTO</span>
+                            <span class="panel-tag">ESTADO: DISPONIBLE</span>
                         </div>
-                        <div class="panel-body">
-                            <p>Canales abiertos para consultas y oportunidades laborales.</p>
+                        <div class="panel-body contact-body">
+                            
+                            <!-- Columna Izquierda: Accesos Rápidos y Redes -->
+                            <div class="contact-links-panel">
+                                <span class="contact-subtitle">CANALES DIRECTOS</span>
+                                
+                                <div class="direct-channels">
+                                    <!-- LinkedIn -->
+                                    <a href="https://www.linkedin.com/in/adri-martin-alamillo" target="_blank" rel="noopener noreferrer" class="contact-card-btn">
+                                        <div class="channel-icon">in</div>
+                                        <div class="channel-info">
+                                            <strong>LINKEDIN</strong>
+                                            <span>/in/adri-martin-alamillo</span>
+                                        </div>
+                                        <span class="channel-arrow">→</span>
+                                    </a>
+
+                                    <!-- GitHub -->
+                                    <a href="https://github.com/AdriMartin93" target="_blank" rel="noopener noreferrer" class="contact-card-btn">
+                                        <div class="channel-icon">gh</div>
+                                        <div class="channel-info">
+                                            <strong>GITHUB</strong>
+                                            <span>/AdriMartin93</span>
+                                        </div>
+                                        <span class="channel-arrow">→</span>
+                                    </a>
+
+                                    <!-- Email con Copiado Rápido -->
+                                    <div class="contact-card-btn email-copy-btn" @click="copiarEmail">
+                                        <div class="channel-icon">@</div>
+                                        <div class="channel-info">
+                                            <strong>CORREO ELECTRÓNICO</strong>
+                                            <span>{{ emailContacto }}</span>
+                                        </div>
+                                        <span class="channel-arrow">{{ emailCopiado ? '✓ COPIADO' : 'COPIAR' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="availability-box">
+                                    <span class="avail-title">DISPONIBILIDAD:</span>
+                                    <p>Abierto a ofertas como Desarrollador Backend Junior / Full Stack. Modalidad Presencial, Remoto o Híbrido.</p>
+                                </div>
+                            </div>
+
+                            <!-- Columna Derecha: Formulario de cONTACTO -->
+                            <div class="contact-form-panel">
+                                <span class="contact-subtitle">FORMULARIO DE CONTACTO</span>
+
+                                <form class="nier-form" @submit.prevent="enviarFormulario">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="nombre">REMITENTE / NOMBRE *</label>
+                                            <input type="text" id="nombre" v-model="formulario.nombre" placeholder="Ej. María García" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">CORREO DE CONTACTO *</label>
+                                            <input type="email" id="email" v-model="formulario.email" placeholder="maria@empresa.com" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="asunto">ASUNTO / MOTIVO</label>
+                                        <select id="asunto" v-model="formulario.asunto">
+                                            <option value="Propuesta laboral">Propuesta laboral / Oferta</option>
+                                            <option value="Colaboración">Colaboración / Networking</option>
+                                            <option value="Otro">Otro motivo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mensaje">MENSAJE *</label>
+                                        <textarea id="mensaje" rows="7" v-model="formulario.mensaje" placeholder="Escribe aquí tu propuesta o mensaje..." required></textarea>
+                                    </div>
+
+                                    <button type="submit" class="submit-btn" :disabled="enviando">
+                                        <span class="btn-icon">▲</span>
+                                        <span>{{ enviando ? 'TRANSMITIENDO...' : 'ENVIAR MENSAJE' }}</span>
+                                    </button>
+
+                                    <!-- Mensaje de éxito o confirmación -->
+                                    <div v-if="mensajeEnviado" class="form-success-banner">
+                                        <span>[OK] MENSAJE ENVIADO CON ÉXITO. RESPONDERÉ A LA MAYOR BREVEDAD.</span>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
                     </section>
 
@@ -237,34 +321,93 @@
 
             </main>
 
-            <!-- COLUMNA DERECHA: TARJETA DE ESTADO -->
+            <!-- COLUMNA DERECHA: PERFIL / PROFILE // QUICK STACK -->
             <aside class="nier-status-card">
                 <div class="status-card-header">
-                    <span>STATUS OVERVIEW</span>
+                    <span>PERFIL</span>
+                    <span class="chip-status-tag">[VERIFIED]</span>
                 </div>
 
                 <div class="status-card-body">
                     <div class="status-top">
                         <h2 class="operator-name">ADRIÁN MARTÍN</h2>
-                        <span class="operator-lvl">Lv: 99</span>
+                        <span class="operator-lvl">JUNIOR DEV</span>
                     </div>
 
-                    <div class="stat-row">
-                        <span class="stat-label">ROL:</span>
-                        <span class="stat-value">BACKEND DEV</span>
-                    </div>
+                    <p class="profile-summary">RESUMEN</p>
 
-                    <div class="stat-row">
-                        <span class="stat-label">EXP:</span>
-                        <span class="stat-value">999999</span>
-                    </div>
-
-                    <div class="stat-row hp-row">
-                        <span class="stat-label">HP:</span>
-                        <div class="hp-bar-container">
-                            <div class="hp-bar-fill"></div>
+                    <!-- Checklist Rápido de Tecnologías -->
+                    <div class="stack-checklist">
+                        
+                        <!-- Core Backend -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">Java 17 / 21</span>
+                            <span class="check-badge">CORE</span>
                         </div>
-                        <span class="stat-value">100 / 100</span>
+
+                        <!-- Framework -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">Spring Boot</span>
+                            <span class="check-badge">FRAMEWORK</span>
+                        </div>
+
+                        <!-- Microservicios -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">Spring Cloud & Microservicios</span>
+                            <span class="check-badge">ARCH</span>
+                        </div>
+
+                        <!-- Arquitectura -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">DDD / Arquitectura Hexagonal</span>
+                            <span class="check-badge">DESIGN</span>
+                        </div>
+
+                        <!-- SQL Databases -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">MySQL & PostgreSQL</span>
+                            <span class="check-badge">RDBMS</span>
+                        </div>
+
+                        <!-- NoSQL Database -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">MongoDB</span>
+                            <span class="check-badge">NOSQL</span>
+                        </div>
+
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">JavaScript</span>
+                            <span class="check-badge">SCRIPTING</span>
+                        </div>
+
+                        <!-- Version Control -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">Git & GitHub</span>
+                            <span class="check-badge">VCS</span>
+                        </div>
+
+                        <!-- Containers -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">Docker (Deploy básico)</span>
+                            <span class="check-badge">CONTAINER</span>
+                        </div>
+
+                        <!-- Frontend -->
+                        <div class="check-item">
+                            <span class="check-box">[✓]</span>
+                            <span class="check-name">React & Vue.js 3</span>
+                            <span class="check-badge">FRONTEND</span>
+                        </div>
+
                     </div>
                 </div>
             </aside>
@@ -276,11 +419,6 @@
             <div class="footer-msg">
                 <span class="cursor-bar"></span>
                 <p>MÓDULO SELECCIONADO: {{ tituloActual }}</p>
-            </div>
-            <div class="footer-controls">
-                <span>⬡ SELECCIONAR</span>
-                <span>◯ CONFIRMAR</span>
-                <span>✕ SALIR</span>
             </div>
         </footer>
 

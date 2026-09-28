@@ -25,7 +25,7 @@ createApp({
     const indiceActivo = computed(() => secciones.indexOf(seccionActiva.value));
 
     // =========================================
-    // 2. ARRAY DE OBJETOS: DATOS DE TU STACK
+    // ARRAY DE OBJETOS: DATOS DE STACK
     // =========================================
     const tecnologias = [
       {
@@ -53,9 +53,15 @@ createApp({
         descripcion: 'Gestión y control de versiones mediante Git y GitHub para flujo de trabajo colaborativo. Uso práctico de Docker enfocado en contenerización de aplicaciones backend para facilitar su despliegue y puesta en marcha en servidores y entornos cloud.'
       },
       {
+        id: 'javascript',
+        nombre: 'JavaScript ',
+        tag: 'WEB/SCRIPTING',
+        descripcion: 'Lenguaje fundamental para desarrollo web. Dominio de sintaxis moderna ES6+, manejo asíncrono (Promises, async/await, Fetch API), manipulación del DOM y consumo dinámico de APIs RESTful.'
+      },
+      {
         id: 'frontend',
-        nombre: 'JavaScript, React & Vue.js',
-        tag: 'FRONTEND SPA',
+        nombre: 'React & Vue.js',
+        tag: 'FRONTEND',
         descripcion: 'Capacidad para construir y conectar interfaces interactivas para complementar el backend. Experiencia desarrollando el frontend del proyecto final de DAW con React y creación de interfaces dinámicas y modulares con Vue.js 3.'
       },
       {
@@ -80,7 +86,79 @@ createApp({
     }
 
     // =========================================
-    // 3. SÍNTESIS DE AUDIO (Web Audio API)
+    // SECCIÓN CONTACTO Y ENVÍO REAL (FORMSPREE)
+    // =========================================
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjgkgdj';
+
+    const emailContacto = ref('adrianma1993@gmail.com'); 
+    const emailCopiado = ref(false);
+
+    function copiarEmail() {
+      navigator.clipboard.writeText(emailContacto.value).then(() => {
+        emailCopiado.value = true;
+        reproducirSonidoClick();
+        setTimeout(() => {
+          emailCopiado.value = false;
+        }, 2500);
+      });
+    }
+
+    const formulario = ref({
+      nombre: '',
+      email: '',
+      asunto: 'Propuesta laboral',
+      mensaje: ''
+    });
+
+    const enviando = ref(false);
+    const mensajeEnviado = ref(false);
+    const errorEnvio = ref(false);
+
+    async function enviarFormulario() {
+      enviando.value = true;
+      mensajeEnviado.value = false;
+      errorEnvio.value = false;
+      reproducirSonidoClick();
+
+      try {
+        const respuesta = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formulario.value.nombre,
+            email: formulario.value.email,
+            subject: formulario.value.asunto,
+            message: formulario.value.mensaje
+          })
+        });
+
+        if (respuesta.ok) {
+          mensajeEnviado.value = true;
+          formulario.value = {
+            nombre: '',
+            email: '',
+            asunto: 'Propuesta laboral',
+            mensaje: ''
+          };
+          setTimeout(() => {
+            mensajeEnviado.value = false;
+          }, 7000);
+        } else {
+          errorEnvio.value = true;
+        }
+      } catch (err) {
+        console.error('Error al enviar correo:', err);
+        errorEnvio.value = true;
+      } finally {
+        enviando.value = false;
+      }
+    }
+
+    // =========================================
+    // SÍNTESIS DE AUDIO (Web Audio API)
     // =========================================
     let audioCtx = null;
 
@@ -124,7 +202,7 @@ createApp({
     }
 
     // =========================================
-    // 4. CAMBIO DE PESTAÑAS Y SCROLL
+    // CAMBIO DE PESTAÑAS Y SCROLL
     // =========================================
     function cambiarSeccion(nombreSeccion) {
       if (seccionActiva.value !== nombreSeccion) {
@@ -169,7 +247,7 @@ createApp({
     });
 
     // ==========================================================
-    // 5. EL RETURN: AQUÍ SE COMPARTE TODO CON EL HTML
+    // EL RETURN: AQUÍ SE COMPARTE TODO CON EL HTML
     // ==========================================================
     return {
       seccionActiva,
@@ -177,9 +255,17 @@ createApp({
       tituloActual,
       kanjiActual,
       cambiarSeccion,
-      tecnologias,        // Lista de tecnologías visible en el HTML
-      stackSeleccionado,  // Variable que guarda cuál está abierta
-      toggleStack         // Función que se ejecuta con @click en el HTML
+      tecnologias,        
+      stackSeleccionado,  
+      toggleStack,        
+      emailContacto,
+      emailCopiado,
+      copiarEmail,
+      formulario,
+      enviando,
+      mensajeEnviado,
+      errorEnvio,
+      enviarFormulario
     };
   }
 }).mount('#app');

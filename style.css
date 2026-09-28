@@ -148,10 +148,9 @@ body.nier-theme::before {
   background: var(--nier-panel-light);
   border: 1px solid var(--nier-border);
   overflow: hidden;
-  /* Corta todo lo que sube o baja */
   position: relative;
-  height: 480px;
-  /* Ventana fija para la diapositiva */
+  min-height: 580px;
+  height: clamp(560px, 64vh, 720px);
 }
 
 /* PISTA DESLIZANTE VERTICAL CON REBOTE MECÁNICO */
@@ -170,7 +169,6 @@ body.nier-theme::before {
   min-height: 100%;
   width: 100%;
   flex-shrink: 0;
-  /* CLAVE: evita que flex colapse la altura de los items */
   display: flex;
   flex-direction: column;
 }
@@ -229,11 +227,137 @@ body.nier-theme::before {
   font-size: 1.05rem;
 }
 
-/* TARJETA DE ESTADO (COLUMNA DERECHA) */
+/* TARJETA DE ESTADO // SOFT SKILLS (COLUMNA DERECHA) */
 .nier-status-card {
   background: var(--nier-panel-light);
   border: 1px solid var(--nier-border);
-  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.status-card-header {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+}
+
+.chip-status-tag {
+  font-size: 0.8rem;
+  color: var(--nier-bg);
+}
+
+.status-card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed rgba(78, 75, 66, 0.4);
+  padding-bottom: 8px;
+}
+
+.operator-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.operator-lvl {
+  font-size: 0.9rem;
+  color: var(--nier-muted);
+  font-weight: 600;
+}
+
+.soft-skills-intro {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  margin-top: -4px;
+}
+
+/* LISTA DE CHIPS */
+.chips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chip-item {
+  background: rgba(78, 75, 66, 0.05);
+  border-left: 2px solid var(--nier-dark);
+  padding: 8px 10px;
+  transition: all 0.2s ease;
+}
+
+.chip-item:hover {
+  background: rgba(78, 75, 66, 0.12);
+  transform: translateX(3px);
+}
+
+.chip-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.chip-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.chip-value {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--nier-muted);
+}
+
+.chip-desc {
+  font-size: 0.82rem;
+  line-height: 1.25;
+  color: var(--nier-dark);
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+/* Barra de progreso fina */
+.chip-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(78, 75, 66, 0.2);
+  overflow: hidden;
+}
+
+.chip-fill {
+  height: 100%;
+  background-color: var(--nier-dark);
+  transition: width 0.8s ease-in-out;
+}
+
+.status-footer-badge {
+  margin-top: 6px;
+  border-top: 1px solid rgba(78, 75, 66, 0.3);
+  padding-top: 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: var(--nier-dark);
 }
 
 .status-card-header {
@@ -344,7 +468,7 @@ body.nier-theme::before {
 
 .gear-wrapper {
   position: absolute;
-  opacity: 0.18; 
+  opacity: 0.18;
 }
 
 /* 1. CUADRANTE CENTRO-IZQUIERDA (Engranaje principal grande) */
@@ -458,13 +582,23 @@ body.nier-theme::before {
 }
 
 @keyframes spinRight {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spinLeft {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 /* =========================================
@@ -643,8 +777,289 @@ a,
     opacity: 0;
     transform: translateY(-6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* =========================================
+   SECCIÓN DE CONTACTO TEMÁTICA
+   ========================================= */
+
+.contact-body {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+  height: 100%;
+}
+
+.contact-subtitle {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--nier-muted);
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+/* Canales Directos */
+.direct-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.contact-card-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(78, 75, 66, 0.08);
+  border: 1px solid rgba(78, 75, 66, 0.25);
+  color: var(--nier-dark);
+  text-decoration: none;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.contact-card-btn:hover {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border-color: var(--nier-dark);
+  transform: translateX(4px);
+}
+
+.channel-icon {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.channel-info strong {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.channel-info span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.channel-arrow {
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.email-copy-btn {
+  cursor: pointer;
+}
+
+.availability-box {
+  border-left: 2px solid var(--nier-dark);
+  padding: 8px 12px;
+  background: rgba(78, 75, 66, 0.04);
+}
+
+.avail-title {
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: var(--nier-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.availability-box p {
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+/* Formulario */
+.nier-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(220, 217, 199, 0.7);
+  border: 1px solid var(--nier-dark);
+  color: var(--nier-dark);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  padding: 8px 10px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  background: #fff;
+  border-color: #000;
+  box-shadow: 2px 2px 0 var(--nier-dark);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 155px;
+  line-height: 1.8;
+}
+
+.submit-btn {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border: 1px solid var(--nier-dark);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  margin-top: 4px;
+}
+
+.submit-btn:hover {
+  background: var(--nier-dark-hover);
+  box-shadow: 3px 3px 0 rgba(78, 75, 66, 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-success-banner {
+  background: rgba(78, 75, 66, 0.15);
+  border: 1px solid var(--nier-dark);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Adaptación para pantallas estrechas */
+@media (max-width: 800px) {
+  .contact-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   CHECKLIST DE STACK // PERFIL LATERAL
+   ========================================= */
+
+.profile-summary {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  margin-top: -4px;
+  font-weight: bold;
+}
+
+.stack-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(78, 75, 66, 0.06);
+  border-left: 2px solid var(--nier-dark);
+  font-size: 0.88rem;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.check-item:hover {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  transform: translateX(4px);
+}
+
+.check-box {
+  font-weight: 700;
+  color: var(--nier-dark);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.check-item:hover .check-box {
+  color: #a4d293; /* Toque verde terminal táctico al pasar el ratón */
+}
+
+.check-name {
+  flex: 1;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.check-badge {
+  font-size: 0.72rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--nier-muted);
+  flex-shrink: 0;
+}
+
+.check-item:hover .check-badge {
+  color: var(--nier-bg);
 }
