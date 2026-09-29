@@ -86,6 +86,51 @@ createApp({
     }
 
     // =========================================
+    // SECCIÓN PROYECTOS (ESTADO Y DATOS)
+    // =========================================
+    const proyectos = [
+      {
+        id: 'proyecto-1',
+        numero: 'PRJ_01',
+        nombre: 'Gestor Resi',
+        categoria: 'FULL STACK',
+        subtitulo: 'Plataforma integral de gestión sociosanitaria',
+        descripcion: 'Plataforma web diseñada a partir de mi experiencia previa en el sector sanitario para digitalizar la operativa integral de un centro residencial. Cuenta con arquitectura desacoplada: backend robusto en Java con Spring Boot para la lógica de negocio, control de acceso basado en roles (RBAC) y persistencia relacional. Permite la administración de expedientes de residentes, asignación de personal, control estricto de pautas de medicación y registro de partes diarios de enfermería, asegurando la trazabilidad clínica y operativa.',
+        stack: ['Java', 'Spring Boot','Spring Security', 'MySQL', 'Javascript', 'Bootstrap'],
+        imagen: './images/gestorREsi.png',
+        demoUrl: 'https://gestion-resi.onrender.com/',
+        githubBack: 'https://github.com/AdriMartin93/gestion-residencia',  // <-- Repo Java/Spring
+        githubFront: 'https://github.com/AdriMartin93/gestion-resi-front' // <-- Repo Javascript
+      },
+      {
+        id: 'proyecto-2',
+        numero: 'PRJ_02',
+        nombre: 'Omnitrack',
+        categoria: 'FULL STACK',
+        subtitulo: 'Proyecto en desarrollo, sin demo disponible aún',
+        descripcion: 'Plataforma integral para centralizar y calendarizar el seguimiento de series, películas, videojuegos, manga y anime. Permite a los usuarios organizar su actividad, recibir alertas y cuentas atrás para próximos estrenos, y participar en una comunidad compartiendo listas y reseñas. A nivel técnico, el sistema se divide en microservicios independientes construidos con Spring Boot y Spring Cloud, aplicando Arquitectura Hexagonal para desacoplar las reglas de negocio de la infraestructura. Combina MySQL y MongoDB según la naturaleza de cada dato, con una hoja de ruta orientada a eventos mediante Apache Kafka para soportar alta concurrencia.',
+        stack: ['Java', 'Springboot', 'Spring Cloud', 'Spring Security','MySQL', 'MongoDB', 'Javascript'],
+        imagen: './images/noFoto.png',
+        demoUrl: null, 
+        githubBack: 'https://github.com/AdriMartin93/omnitrack',
+        githubFront: null 
+      }
+    ];
+
+    const proyectoActivoId = ref(proyectos[0].id);
+
+    const proyectoSeleccionado = computed(() => {
+      return proyectos.find(p => p.id === proyectoActivoId.value) || proyectos[0];
+    });
+
+    function seleccionarProyecto(id) {
+      if (proyectoActivoId.value !== id) {
+        proyectoActivoId.value = id;
+        reproducirSonidoClick();
+      }
+    }
+
+    // =========================================
     // SECCIÓN CONTACTO Y ENVÍO REAL (FORMSPREE)
     // =========================================
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjgkgdj';
@@ -216,6 +261,21 @@ createApp({
     function manejarScroll(e) {
       despertarAudio();
       if (scrollBloqueado) return;
+      const elementoScrollable = e.target.closest('.panel-body');
+
+      if (elementoScrollable) {
+        const { scrollTop, scrollHeight, clientHeight } = elementoScrollable;
+        const puedeBajar = scrollTop + clientHeight < scrollHeight - 3;
+        const puedeSubir = scrollTop > 3;
+
+        if (e.deltaY > 0 && puedeBajar) {
+          return;
+        }
+
+        if (e.deltaY < 0 && puedeSubir) {
+          return;
+        }
+      }
 
       const idxActual = secciones.indexOf(seccionActiva.value);
 
@@ -265,7 +325,11 @@ createApp({
       enviando,
       mensajeEnviado,
       errorEnvio,
-      enviarFormulario
+      enviarFormulario,
+      proyectos,
+      proyectoActivoId,
+      proyectoSeleccionado,
+      seleccionarProyecto
     };
   }
 }).mount('#app');

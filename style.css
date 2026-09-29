@@ -210,6 +210,120 @@ body.nier-theme::before {
   opacity: 0.4;
 }
 
+/* =========================================
+   SECCIÓN SOBRE MÍ
+   ========================================= */
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-hero h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2.1rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+/* Fila de metadatos tipo ficha de expediente militar */
+.about-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 18px;
+  background: rgba(78, 75, 66, 0.05);
+  border-left: 3px solid var(--nier-dark);
+  padding: 10px 14px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.meta-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--nier-dark);
+}
+
+/* Párrafos narrativos */
+.about-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-narrative p {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--nier-dark);
+}
+
+.about-narrative strong {
+  color: var(--nier-dark);
+  background: rgba(78, 75, 66, 0.1);
+  padding: 1px 4px;
+}
+
+/* Tarjetas inferiores de valor diferencial */
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.highlight-card {
+  background: rgba(78, 75, 66, 0.04);
+  border: 1px solid rgba(78, 75, 66, 0.2);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.highlight-card:hover {
+  background: rgba(78, 75, 66, 0.09);
+  border-color: var(--nier-dark);
+  transform: translateY(-2px);
+}
+
+.highlight-card strong {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--nier-dark);
+}
+
+.highlight-card span {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--nier-muted);
+}
+
+/* Adaptación para pantallas estrechas */
+@media (max-width: 800px) {
+  .about-meta-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* LISTADO STACK TECNOLÓGICO */
 .stack-grid {
   display: flex;
@@ -357,6 +471,266 @@ body.nier-theme::before {
   letter-spacing: 2px;
   font-weight: bold;
   color: var(--nier-dark);
+}
+
+/* =========================================
+   SECCIÓN DE PROYECTOS (ESTILO EXPEDIENTE)
+   ========================================= */
+
+.projects-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  height: 100%;
+  padding: 18px 24px;
+}
+
+/* Columna Izquierda */
+.projects-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projects-subhead {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-tab-card {
+  padding: 10px 12px;
+  background: rgba(78, 75, 66, 0.06);
+  border: 1px solid rgba(78, 75, 66, 0.25);
+  border-left: 3px solid var(--nier-dark);
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.project-tab-card:hover {
+  background: rgba(78, 75, 66, 0.12);
+  transform: translateX(4px);
+}
+
+.project-tab-card.active {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border-color: var(--nier-dark);
+  box-shadow: 2px 2px 0 rgba(78, 75, 66, 0.3);
+}
+
+.tab-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+.tab-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Columna Derecha (Ficha detallada) */
+.project-details-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(78, 75, 66, 0.03);
+  padding: 12px 16px;
+  border: 1px solid rgba(78, 75, 66, 0.2);
+}
+
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.detail-code {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.detail-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 2px 0;
+}
+
+.detail-subtitle {
+  font-size: 0.85rem;
+  color: var(--nier-muted);
+}
+
+/* Botones de Render y GitHub */
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: 1px solid var(--nier-dark);
+  white-space: nowrap;
+}
+
+.render-btn {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+}
+
+.render-btn:hover {
+  background: var(--nier-dark-hover);
+  transform: translateY(-2px);
+}
+
+.github-btn {
+  background: transparent;
+  color: var(--nier-dark);
+}
+
+.github-btn:hover {
+  background: rgba(78, 75, 66, 0.12);
+  transform: translateY(-2px);
+}
+
+.btn-arrow {
+  font-size: 0.95rem;
+}
+
+/* Marco de la imagen de proyecto */
+.project-preview-frame {
+  position: relative;
+  width: 100%;
+  height: 220px; /* Le damos más holgura vertical */
+  background: rgba(40, 38, 33, 0.95); /* Fondo oscuro táctico */
+  overflow: hidden;
+  border: 1px solid var(--nier-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Muestra toda la imagen cuadrada sin recortar ni un píxel */
+  display: block;
+  opacity: 0.95;
+  filter: contrast(102%);
+  transition: transform 0.3s ease;
+}
+
+.project-preview-frame:hover .preview-img {
+  transform: scale(1.02);
+}
+
+.frame-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--nier-bg);
+  pointer-events: none;
+}
+
+.frame-corner.top-left {
+  top: 4px;
+  left: 4px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame-corner.bottom-right {
+  bottom: 4px;
+  right: 4px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Bloque descriptivo */
+.project-desc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.desc-label {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.project-desc-block p {
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--nier-dark);
+}
+
+/* Etiquetas del Stack */
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.tag-badge {
+  background: rgba(78, 75, 66, 0.12);
+  border: 1px solid rgba(78, 75, 66, 0.3);
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* Adaptación para pantallas estrechas */
+@media (max-width: 850px) {
+  .projects-body {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .detail-header {
+    flex-direction: column;
+  }
+  .detail-actions {
+    width: 100%;
+  }
+  .action-btn {
+    flex: 1;
+    justify-content: center;
+  }
 }
 
 /* FOOTER */
@@ -542,7 +916,9 @@ a,
 .check-item,
 .contact-card-btn,
 .email-copy-btn,
-.submit-btn {
+.submit-btn,
+.project-tab-card,
+.action-btn {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M8 11 V8 H11 M17 8 H20 V11 M20 17 V20 H17 M11 20 H8 V17' stroke='%2335332c' stroke-width='2' fill='none' stroke-linecap='square'/%3E%3Cpolygon points='14,9 19,14 14,19 9,14' fill='%234e4b42'/%3E%3Ccircle cx='14' cy='14' r='1.5' fill='%23eae8dc'/%3E%3C/svg%3E") 14 14, pointer !important;
 }
 

@@ -163,16 +163,85 @@
                     <!-- SECCIÓN 1: SOBRE MÍ -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>REGISTRO PERSONAL </span>
-                            <span class="panel-tag">ID: AM-2026</span>
+                            <span>REGISTRO DE OPERADOR // SOBRE MÍ</span>
+                            <span class="panel-tag">BASE: GIRONA, ESPAÑA</span>
                         </div>
-                        <div class="panel-body">
-                            <h3>ADRIÁN MARTÍN</h3>
-                            <p class="role-subtitle">Desarrollador Backend | Estudiante DAW</p>
+                        <div class="panel-body about-body">
+
+                            <div class="about-hero">
+                                <h3>ADRIÁN MARTÍN</h3>
+                                <!-- Ajustado a Full Stack con enfoque Back -->
+                                <div class="role-subtitle">DESARROLLADOR WEB // FULL STACK (BACKEND ORIENTED)</div>
+                            </div>
+
                             <hr class="nier-subline">
-                            <p>Especializado en lógica de negocio, arquitectura orientada a servicios y persistencia de
-                                datos. Enfocado en construir APIs robustas, limpias y eficientes con el ecosistema Java.
-                            </p>
+
+                            <!-- Cuadrícula de metadatos rápidos -->
+                            <div class="about-meta-grid">
+                                <div class="meta-item">
+                                    <span class="meta-label">UBICACIÓN:</span>
+                                    <span class="meta-value">Girona (Presencial / Híbrido / Remoto)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">ENFOQUE:</span>
+                                    <span class="meta-value">Full Stack (Java/Spring & React/Vue)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">FORMACIÓN:</span>
+                                    <span class="meta-value">CFGS Desarrollo de Aplicaciones Web (DAW)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">TRAYECTORIA:</span>
+                                    <span class="meta-value">+9 Años en sector sanitario (Atención & Equipos)</span>
+                                </div>
+                            </div>
+
+                            <!-- Texto de presentación -->
+                            <div class="about-narrative">
+                                <p>
+                                    Mi camino hacia el desarrollo de software comenzó tras casi una década de
+                                    trayectoria profesional en el ámbito sanitario como técnico auxiliar. Durante esos
+                                    años desarrollé una alta capacidad de <strong>trabajo en equipo
+                                        multidisciplinar</strong>, rigor organizativo y una sólida templanza en la
+                                    <strong>resolución de situaciones críticas</strong> y trato directo con las
+                                    personas.
+                                </p>
+                                <p>
+                                    Motivado por mi constante inquietud tecnológica y el objetivo de asumir nuevos retos
+                                    donde el impacto y el aprendizaje diario no tuvieran un techo prefijado, en 2023
+                                    tomé la decisión de reorientar mi carrera completando el grado en <strong>Desarrollo
+                                        de Aplicaciones Web (DAW)</strong>.
+                                </p>
+                                <p>
+                                    Cuento con formación completa de extremo a extremo: aunque siento especial afinidad
+                                    por la lógica de servidor y el <strong>backend</strong> (Java, Spring Boot, bases de
+                                    datos y arquitectura limpia), me desenvuelvo con soltura construyendo interfaces
+                                    dinámicas en <strong>frontend</strong> (JavaScript, React, Vue.js). Aporto al equipo
+                                    madurez laboral, versatilidad para adaptarme a cualquier capa del proyecto y la
+                                    motivación de quien ha elegido conscientemente esta profesión para sumar desde el
+                                    primer día.
+                                </p>
+                            </div>
+
+                            <!-- Destacados / Soft Skills probadas -->
+                            <div class="about-highlights">
+                                <div class="highlight-card">
+                                    <strong>TEMPLANZA & RESOLUCIÓN</strong>
+                                    <span>Gestión tranquila y analítica ante imprevistos, adquirida en entornos de alta
+                                        exigencia.</span>
+                                </div>
+                                <div class="highlight-card">
+                                    <strong>COMUNICACIÓN & EMPATÍA</strong>
+                                    <span>Hábito constante de interactuar con perfiles diversos y facilitar dinámicas de
+                                        trabajo sanas.</span>
+                                </div>
+                                <div class="highlight-card">
+                                    <strong>VERSATILIDAD TÉCNICA</strong>
+                                    <span>Capacidad para resolver tareas tanto en servidor como en cliente con
+                                        mentalidad práctica.</span>
+                                </div>
+                            </div>
+
                         </div>
                     </section>
 
@@ -213,12 +282,85 @@
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
                             <span>PROYECTOS</span>
-                            <span class="panel-tag">TOTAL: 03</span>
+                            <span class="panel-tag">REPOSITORIOS: ACTIVOS</span>
                         </div>
-                        <div class="panel-body">
-                            <p>Aquí puedes listar tus proyectos o repositorios de GitHub con estilo de informe de
-                                combate.
-                            </p>
+                        <div class="panel-body projects-body">
+
+                            <!-- Columna Izquierda: Selector de proyectos -->
+                            <div class="projects-sidebar">
+                                <span class="projects-subhead">LISTA DE PROYECTOS</span>
+                                <div class="projects-list">
+                                    <div v-for="item in proyectos" :key="item.id" class="project-tab-card"
+                                        :class="{ 'active': item.id === proyectoActivoId }"
+                                        @click="seleccionarProyecto(item.id)">
+                                        <div class="tab-meta">
+                                            <span class="tab-id">{{ item.numero }}</span>
+                                            <span class="tab-cat">{{ item.categoria }}</span>
+                                        </div>
+                                        <div class="tab-title">{{ item.nombre }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Columna Derecha: Detalle del proyecto seleccionado -->
+                            <div class="project-details-view" v-if="proyectoSeleccionado">
+                                <div class="detail-header">
+                                    <div>
+                                        <span class="detail-code">ID: {{ proyectoSeleccionado.numero }} // {{
+                                            proyectoSeleccionado.categoria }}</span>
+                                        <h3 class="detail-title">{{ proyectoSeleccionado.nombre }}</h3>
+                                        <p class="detail-subtitle">{{ proyectoSeleccionado.subtitulo }}</p>
+                                    </div>
+                                    <div class="detail-actions">
+                                        <!-- Botón Deploy Render (solo si existe demoUrl) -->
+                                        <a v-if="proyectoSeleccionado.demoUrl" :href="proyectoSeleccionado.demoUrl"
+                                            target="_blank" rel="noopener noreferrer" class="action-btn render-btn">
+                                            <span>DEPLOY [RENDER]</span>
+                                            <span class="btn-arrow">↗</span>
+                                        </a>
+
+                                        <!-- Botón Repo Backend -->
+                                        <a v-if="proyectoSeleccionado.githubBack"
+                                            :href="proyectoSeleccionado.githubBack" target="_blank"
+                                            rel="noopener noreferrer" class="action-btn github-btn">
+                                            <span>BACKEND [GIT]</span>
+                                            <span class="btn-arrow">↗</span>
+                                        </a>
+
+                                        <!-- Botón Repo Frontend -->
+                                        <a v-if="proyectoSeleccionado.githubFront"
+                                            :href="proyectoSeleccionado.githubFront" target="_blank"
+                                            rel="noopener noreferrer" class="action-btn github-btn">
+                                            <span>FRONTEND [GIT]</span>
+                                            <span class="btn-arrow">↗</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <hr class="nier-subline">
+
+                                <!-- Visualizador de imagen con marco NieR -->
+                                <div class="project-preview-frame">
+                                    <img :src="proyectoSeleccionado.imagen" :alt="proyectoSeleccionado.nombre"
+                                        class="preview-img">
+                                    <div class="frame-corner top-left"></div>
+                                    <div class="frame-corner bottom-right"></div>
+                                </div>
+
+                                <!-- Explicación Técnica -->
+                                <div class="project-desc-block">
+                                    <span class="desc-label">ESPECIFICACIONES TÉCNICAS:</span>
+                                    <p>{{ proyectoSeleccionado.descripcion }}</p>
+                                </div>
+
+                                <!-- Etiquetas del Stack usado -->
+                                <div class="project-tech-tags">
+                                    <span class="tag-badge" v-for="tec in proyectoSeleccionado.stack" :key="tec">
+                                        {{ tec }}
+                                    </span>
+                                </div>
+                            </div>
+
                         </div>
                     </section>
 
@@ -229,14 +371,15 @@
                             <span class="panel-tag">ESTADO: DISPONIBLE</span>
                         </div>
                         <div class="panel-body contact-body">
-                            
+
                             <!-- Columna Izquierda: Accesos Rápidos y Redes -->
                             <div class="contact-links-panel">
                                 <span class="contact-subtitle">CANALES DIRECTOS</span>
-                                
+
                                 <div class="direct-channels">
                                     <!-- LinkedIn -->
-                                    <a href="https://www.linkedin.com/in/adri-martin-alamillo" target="_blank" rel="noopener noreferrer" class="contact-card-btn">
+                                    <a href="https://www.linkedin.com/in/adri-martin-alamillo" target="_blank"
+                                        rel="noopener noreferrer" class="contact-card-btn">
                                         <div class="channel-icon">in</div>
                                         <div class="channel-info">
                                             <strong>LINKEDIN</strong>
@@ -246,7 +389,8 @@
                                     </a>
 
                                     <!-- GitHub -->
-                                    <a href="https://github.com/AdriMartin93" target="_blank" rel="noopener noreferrer" class="contact-card-btn">
+                                    <a href="https://github.com/AdriMartin93" target="_blank" rel="noopener noreferrer"
+                                        class="contact-card-btn">
                                         <div class="channel-icon">gh</div>
                                         <div class="channel-info">
                                             <strong>GITHUB</strong>
@@ -268,7 +412,8 @@
 
                                 <div class="availability-box">
                                     <span class="avail-title">DISPONIBILIDAD:</span>
-                                    <p>Abierto a ofertas como Desarrollador Backend Junior / Full Stack. Modalidad Presencial, Remoto o Híbrido.</p>
+                                    <p>Abierto a ofertas como Desarrollador Backend Junior / Full Stack. Modalidad
+                                        Presencial, Remoto o Híbrido.</p>
                                 </div>
                             </div>
 
@@ -280,11 +425,13 @@
                                     <div class="form-row">
                                         <div class="form-group">
                                             <label for="nombre">REMITENTE / NOMBRE *</label>
-                                            <input type="text" id="nombre" v-model="formulario.nombre" placeholder="Ej. María García" required>
+                                            <input type="text" id="nombre" v-model="formulario.nombre"
+                                                placeholder="Ej. María García" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">CORREO DE CONTACTO *</label>
-                                            <input type="email" id="email" v-model="formulario.email" placeholder="maria@empresa.com" required>
+                                            <input type="email" id="email" v-model="formulario.email"
+                                                placeholder="maria@empresa.com" required>
                                         </div>
                                     </div>
 
@@ -299,7 +446,8 @@
 
                                     <div class="form-group">
                                         <label for="mensaje">MENSAJE *</label>
-                                        <textarea id="mensaje" rows="7" v-model="formulario.mensaje" placeholder="Escribe aquí tu propuesta o mensaje..." required></textarea>
+                                        <textarea id="mensaje" rows="7" v-model="formulario.mensaje"
+                                            placeholder="Escribe aquí tu propuesta o mensaje..." required></textarea>
                                     </div>
 
                                     <button type="submit" class="submit-btn" :disabled="enviando">
@@ -338,7 +486,7 @@
 
                     <!-- Checklist Rápido de Tecnologías -->
                     <div class="stack-checklist">
-                        
+
                         <!-- Core Backend -->
                         <div class="check-item">
                             <span class="check-box">[✓]</span>
