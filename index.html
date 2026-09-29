@@ -11,7 +11,7 @@
 
 <body class="nier-theme">
 
-    <!-- FONDO TÉCNICO // 4 ENGRANAJES INTERCONECTADOS -->
+    <!-- FONDO TECNICO - 5 ENGRANAJES INTERCONECTADOS -->
     <div class="nier-bg-decor-container" aria-hidden="true">
 
         <!-- Engranaje 1: Principal grande (centro-izquierda) -->
@@ -52,7 +52,7 @@
             </svg>
         </div>
 
-        <!-- Engranaje 3: Pequeño (zona superior central) -->
+        <!-- Engranaje 3: Pequeño (zona inferior izquierda) -->
         <div class="gear-wrapper gear-bottom-left">
             <svg viewBox="0 0 800 800" class="gear-svg rotate-clockwise-fast">
                 <circle cx="400" cy="400" r="370" class="ring solid" />
@@ -86,7 +86,7 @@
             </svg>
         </div>
 
-        <!-- Engranaje 5: Pequeño central (entre el panel principal y la tarjeta de estado) -->
+        <!-- Engranaje 5: Pequeño central -->
         <div class="gear-wrapper gear-mid-center">
             <svg viewBox="0 0 800 800" class="gear-svg rotate-counter-fast">
                 <circle cx="400" cy="400" r="370" class="ring solid" />
@@ -140,8 +140,7 @@
 
             <!-- Banda decorativa de triángulos -->
             <div class="nier-divider">
-                <span class="dots-triangles">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾
-                    ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</span>
+                <span class="dots-triangles">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</span>
             </div>
 
             <!-- Título de sección activa con subtítulo -->
@@ -157,60 +156,37 @@
             <!-- CONTENEDOR CENTRAL: MÁSCARA DEL SLIDER -->
             <main class="nier-main-container">
 
-                <!-- Pista deslizante vertical que contiene TODAS las secciones -->
                 <div class="slider-track" :style="{ transform: `translateY(-${indiceActivo * 100}%)` }">
 
                     <!-- SECCIÓN 1: SOBRE MÍ -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>REGISTRO DE OPERADOR // SOBRE MÍ</span>
+                            <span>REGISTRO DE OPERADOR — SOBRE MÍ</span>
                             <span class="panel-tag">BASE: GIRONA, ESPAÑA</span>
                         </div>
                         <div class="panel-body about-body">
 
                             <div class="about-hero">
                                 <h3>ADRIÁN MARTÍN</h3>
-                                <!-- Ajustado a Full Stack con enfoque Back -->
-                                <div class="role-subtitle">DESARROLLADOR WEB // FULL STACK (BACKEND ORIENTED)</div>
+                                <div class="role-subtitle">DESARROLLADOR WEB | FULL STACK (BACKEND ORIENTED)</div>
                             </div>
 
                             <hr class="nier-subline">
 
-                            <!-- Cuadrícula de metadatos rápidos -->
-                            <div class="about-meta-grid">
-                                <div class="meta-item">
-                                    <span class="meta-label">UBICACIÓN:</span>
-                                    <span class="meta-value">Girona (Presencial / Híbrido / Remoto)</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">ENFOQUE:</span>
-                                    <span class="meta-value">Full Stack (Java/Spring & React/Vue)</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">FORMACIÓN:</span>
-                                    <span class="meta-value">CFGS Desarrollo de Aplicaciones Web (DAW)</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">TRAYECTORIA:</span>
-                                    <span class="meta-value">+9 Años en sector sanitario (Atención & Equipos)</span>
-                                </div>
-                            </div>
-
-                            <!-- Texto de presentación -->
+                            <!-- Texto de presentación despejado -->
                             <div class="about-narrative">
                                 <p>
                                     Mi camino hacia el desarrollo de software comenzó tras casi una década de
                                     trayectoria profesional en el ámbito sanitario como técnico auxiliar. Durante esos
-                                    años desarrollé una alta capacidad de <strong>trabajo en equipo
-                                        multidisciplinar</strong>, rigor organizativo y una sólida templanza en la
-                                    <strong>resolución de situaciones críticas</strong> y trato directo con las
-                                    personas.
+                                    años desarrollé una alta capacidad de <strong>trabajo en equipo multidisciplinar</strong>,
+                                    rigor organizativo y una sólida templanza en la <strong>resolución de situaciones críticas</strong>
+                                    y trato directo con las personas.
                                 </p>
                                 <p>
                                     Motivado por mi constante inquietud tecnológica y el objetivo de asumir nuevos retos
                                     donde el impacto y el aprendizaje diario no tuvieran un techo prefijado, en 2023
                                     tomé la decisión de reorientar mi carrera completando el grado en <strong>Desarrollo
-                                        de Aplicaciones Web (DAW)</strong>.
+                                    de Aplicaciones Web (DAW)</strong>.
                                 </p>
                                 <p>
                                     Cuento con formación completa de extremo a extremo: aunque siento especial afinidad
@@ -223,22 +199,19 @@
                                 </p>
                             </div>
 
-                            <!-- Destacados / Soft Skills probadas -->
+                            <!-- Destacados / Competencias probadas -->
                             <div class="about-highlights">
                                 <div class="highlight-card">
                                     <strong>TEMPLANZA & RESOLUCIÓN</strong>
-                                    <span>Gestión tranquila y analítica ante imprevistos, adquirida en entornos de alta
-                                        exigencia.</span>
+                                    <span>Gestión tranquila y analítica ante imprevistos, adquirida en entornos de alta exigencia.</span>
                                 </div>
                                 <div class="highlight-card">
                                     <strong>COMUNICACIÓN & EMPATÍA</strong>
-                                    <span>Hábito constante de interactuar con perfiles diversos y facilitar dinámicas de
-                                        trabajo sanas.</span>
+                                    <span>Hábito constante de interactuar con perfiles diversos y facilitar dinámicas de trabajo sanas.</span>
                                 </div>
                                 <div class="highlight-card">
                                     <strong>VERSATILIDAD TÉCNICA</strong>
-                                    <span>Capacidad para resolver tareas tanto en servidor como en cliente con
-                                        mentalidad práctica.</span>
+                                    <span>Capacidad para resolver tareas tanto en servidor como en cliente con mentalidad práctica.</span>
                                 </div>
                             </div>
 
@@ -248,7 +221,7 @@
                     <!-- SECCIÓN 2: STACK -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>TECNOLOGÍAS </span>
+                            <span>TECNOLOGÍAS</span>
                             <span class="panel-tag">TOTAL: {{ tecnologias.length }}</span>
                         </div>
                         <div class="panel-body">
@@ -256,7 +229,6 @@
                                 <div v-for="tech in tecnologias" :key="tech.id" class="stack-card"
                                     :class="{ selected: stackSeleccionado === tech.id }">
 
-                                    <!-- Cabecera clickeable de la opción -->
                                     <div class="stack-header" @click="toggleStack(tech.id)">
                                         <div class="tech-title">
                                             <span class="tech-indicator">⬢</span>
@@ -265,7 +237,6 @@
                                         <strong class="tech-badge">[{{ tech.tag }}]</strong>
                                     </div>
 
-                                    <!-- Panel desplegable con la explicación -->
                                     <div v-if="stackSeleccionado === tech.id" class="stack-details">
                                         <div class="details-inner">
                                             <span class="details-label">EXPERIENCIA:</span>
@@ -281,7 +252,7 @@
                     <!-- SECCIÓN 3: PROYECTOS -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
-                            <span>PROYECTOS</span>
+                            <span>REGISTRO DE PROYECTOS</span>
                             <span class="panel-tag">REPOSITORIOS: ACTIVOS</span>
                         </div>
                         <div class="panel-body projects-body">
@@ -305,17 +276,17 @@
                             <!-- Columna Derecha: Detalle del proyecto seleccionado -->
                             <div class="project-details-view" v-if="proyectoSeleccionado">
                                 <div class="detail-header">
-                                    <div>
-                                        <span class="detail-code">ID: {{ proyectoSeleccionado.numero }} // {{
-                                            proyectoSeleccionado.categoria }}</span>
+                                    <div class="detail-title-group">
+                                        <span class="detail-code">ID: {{ proyectoSeleccionado.numero }} · {{ proyectoSeleccionado.categoria }}</span>
                                         <h3 class="detail-title">{{ proyectoSeleccionado.nombre }}</h3>
                                         <p class="detail-subtitle">{{ proyectoSeleccionado.subtitulo }}</p>
                                     </div>
+
                                     <div class="detail-actions">
-                                        <!-- Botón Deploy Render (solo si existe demoUrl) -->
+                                        <!-- Botón Deploy Render -->
                                         <a v-if="proyectoSeleccionado.demoUrl" :href="proyectoSeleccionado.demoUrl"
                                             target="_blank" rel="noopener noreferrer" class="action-btn render-btn">
-                                            <span>DEPLOY [RENDER]</span>
+                                            <span>VER WEB</span>
                                             <span class="btn-arrow">↗</span>
                                         </a>
 
@@ -339,7 +310,7 @@
 
                                 <hr class="nier-subline">
 
-                                <!-- Visualizador de imagen con marco NieR -->
+                                <!-- Visualizador de imagen adaptado a capturas completas -->
                                 <div class="project-preview-frame">
                                     <img :src="proyectoSeleccionado.imagen" :alt="proyectoSeleccionado.nombre"
                                         class="preview-img">
@@ -353,7 +324,7 @@
                                     <p>{{ proyectoSeleccionado.descripcion }}</p>
                                 </div>
 
-                                <!-- Etiquetas del Stack usado -->
+                                <!-- Etiquetas del Stack completo usado -->
                                 <div class="project-tech-tags">
                                     <span class="tag-badge" v-for="tec in proyectoSeleccionado.stack" :key="tec">
                                         {{ tec }}
@@ -417,7 +388,7 @@
                                 </div>
                             </div>
 
-                            <!-- Columna Derecha: Formulario de cONTACTO -->
+                            <!-- Columna Derecha: Formulario de CONTACTO -->
                             <div class="contact-form-panel">
                                 <span class="contact-subtitle">FORMULARIO DE CONTACTO</span>
 
@@ -455,9 +426,11 @@
                                         <span>{{ enviando ? 'TRANSMITIENDO...' : 'ENVIAR MENSAJE' }}</span>
                                     </button>
 
-                                    <!-- Mensaje de éxito o confirmación -->
                                     <div v-if="mensajeEnviado" class="form-success-banner">
                                         <span>[OK] MENSAJE ENVIADO CON ÉXITO. RESPONDERÉ A LA MAYOR BREVEDAD.</span>
+                                    </div>
+                                    <div v-if="errorEnvio" class="form-error-banner">
+                                        <span>[ERROR] FALLO DE TRANSMISIÓN. POR FAVOR, USA EL CORREO DIRECTO.</span>
                                     </div>
                                 </form>
                             </div>
@@ -469,93 +442,110 @@
 
             </main>
 
-            <!-- COLUMNA DERECHA: PERFIL / PROFILE // QUICK STACK -->
+            <!-- COLUMNA DERECHA: PANEL LATERAL DINÁMICO & CV FIJO -->
             <aside class="nier-status-card">
                 <div class="status-card-header">
-                    <span>PERFIL</span>
-                    <span class="chip-status-tag">[VERIFIED]</span>
+                    <span>RESUMEN</span>
+                    <span class="chip-status-tag">{{ seccionActiva.toUpperCase() }}</span>
                 </div>
 
                 <div class="status-card-body">
                     <div class="status-top">
                         <h2 class="operator-name">ADRIÁN MARTÍN</h2>
-                        <span class="operator-lvl">JUNIOR DEV</span>
+                        <span class="operator-lvl">FULL STACK DEV</span>
                     </div>
 
-                    <p class="profile-summary">RESUMEN</p>
-
-                    <!-- Checklist Rápido de Tecnologías -->
-                    <div class="stack-checklist">
-
-                        <!-- Core Backend -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">Java 17 / 21</span>
-                            <span class="check-badge">CORE</span>
+                    <!-- CASO 1: CONTEXTO SOBRE MÍ (Toda tu ficha técnica aquí) -->
+                    <div class="dynamic-subpanel" v-if="seccionActiva === 'sobre-mi'">
+                        <span class="profile-summary">EXPEDIENTE TÉCNICO</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">UBICACIÓN:</span>
+                            <span class="telemetry-value">Girona, España</span>
                         </div>
-
-                        <!-- Framework -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">Spring Boot</span>
-                            <span class="check-badge">FRAMEWORK</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">MODALIDAD:</span>
+                            <span class="telemetry-value">Presencial · Híbrido · Remoto</span>
                         </div>
-
-                        <!-- Microservicios -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">Spring Cloud & Microservicios</span>
-                            <span class="check-badge">ARCH</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">FORMACIÓN:</span>
+                            <span class="telemetry-value">CFGS Des. Aplicaciones Web (DAW)</span>
                         </div>
-
-                        <!-- Arquitectura -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">DDD / Arquitectura Hexagonal</span>
-                            <span class="check-badge">DESIGN</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">ESPECIALIDAD:</span>
+                            <span class="telemetry-value">Backend (Java/Spring) & Front Web</span>
                         </div>
-
-                        <!-- SQL Databases -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">MySQL & PostgreSQL</span>
-                            <span class="check-badge">RDBMS</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">TRAYECTORIA:</span>
+                            <span class="telemetry-value">+9 Años en Sector Sanitario</span>
                         </div>
-
-                        <!-- NoSQL Database -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">MongoDB</span>
-                            <span class="check-badge">NOSQL</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">IDIOMAS:</span>
+                            <span class="telemetry-value">Castellano (Nat) · Catalán (Nat) · Inglés (Téc)</span>
                         </div>
+                    </div>
 
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">JavaScript</span>
-                            <span class="check-badge">SCRIPTING</span>
+                    <!-- CASO 2: CONTEXTO STACK TECNOLÓGICO -->
+                    <div class="dynamic-subpanel" v-else-if="seccionActiva === 'stack'">
+                        <span class="profile-summary">MÓDULOS DE ARQUITECTURA</span>
+                        <div class="stack-checklist">
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Java 17 / 21</span><span class="check-badge">CORE</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Spring Boot & Cloud</span><span class="check-badge">FRAMEWORK</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Hexagonal / DDD</span><span class="check-badge">ARCH</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">MySQL & PostgreSQL</span><span class="check-badge">RDBMS</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">MongoDB</span><span class="check-badge">NOSQL</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">JavaScript, React & Vue</span><span class="check-badge">FRONTEND</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Docker & Git</span><span class="check-badge">DEVOPS</span></div>
                         </div>
+                    </div>
 
-                        <!-- Version Control -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">Git & GitHub</span>
-                            <span class="check-badge">VCS</span>
+                    <!-- CASO 3: CONTEXTO PROYECTOS (Stack completo sin cortes) -->
+                    <div class="dynamic-subpanel" v-else-if="seccionActiva === 'proyectos' && proyectoSeleccionado">
+                        <span class="profile-summary">EXPEDIENTE: {{ proyectoSeleccionado.numero }}</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">NOMBRE DEL PROYECTO:</span>
+                            <span class="telemetry-value highlight-accent">{{ proyectoSeleccionado.nombre }}</span>
                         </div>
-
-                        <!-- Containers -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">Docker (Deploy básico)</span>
-                            <span class="check-badge">CONTAINER</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">ARQUITECTURA:</span>
+                            <span class="telemetry-value">{{ proyectoSeleccionado.categoria }}</span>
                         </div>
-
-                        <!-- Frontend -->
-                        <div class="check-item">
-                            <span class="check-box">[✓]</span>
-                            <span class="check-name">React & Vue.js 3</span>
-                            <span class="check-badge">FRONTEND</span>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">STACK CLAVE:</span>
+                            <div class="project-tech-tags compact-tags">
+                                <span class="tag-badge" v-for="t in proyectoSeleccionado.stack" :key="t">{{ t }}</span>
+                            </div>
                         </div>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">ESTADO DEL DESPLIEGUE:</span>
+                            <span class="telemetry-value">{{ proyectoSeleccionado.demoUrl ? 'Activo en Render' : 'Desarrollo Activo (Local)' }}</span>
+                        </div>
+                    </div>
 
+                    <!-- CASO 4: CONTEXTO CONTACTO -->
+                    <div class="dynamic-subpanel" v-else-if="seccionActiva === 'contacto'">
+                        <span class="profile-summary">CANAL DE TRANSMISIÓN</span>
+                        <div class="status-pill">
+                            <span class="pulse-dot"></span>
+                            <span>OPEN TO WORK · DISPONIBLE</span>
+                        </div>
+                        <div class="telemetry-row" style="margin-top: 6px;">
+                            <span class="telemetry-label">ZONA HORARIA:</span>
+                            <span class="telemetry-value">CET (Girona / Barcelona)</span>
+                        </div>
+                        <div class="telemetry-row">
+                            <span class="telemetry-label">TIEMPO DE RESPUESTA:</span>
+                            <span class="telemetry-value">&lt; 24 Horas</span>
+                        </div>
+                    </div>
+
+                    <!-- BOTÓN DE DESCARGA CV FIJO Y DIRECTO -->
+                    <div class="cv-action-area">
+                        <a href="./docs/CV_Adrian_Martin.pdf" 
+                           class="btn-cv-tactical" 
+                           @click.prevent="descargarCV">
+                            <span>CV (PDF)</span>
+                            <span class="cv-icon">⬇</span>
+                        </a>
                     </div>
                 </div>
             </aside>

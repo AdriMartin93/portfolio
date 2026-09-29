@@ -2,7 +2,6 @@ const { createApp, ref, computed, onMounted } = Vue;
 
 createApp({
   setup() {
-    // 1. Identificadores de las 4 secciones principales
     const secciones = ['sobre-mi', 'stack', 'proyectos', 'contacto'];
     const seccionActiva = ref('sobre-mi');
 
@@ -24,9 +23,7 @@ createApp({
     const kanjiActual = computed(() => subtitulosIngles[seccionActiva.value] || '');
     const indiceActivo = computed(() => secciones.indexOf(seccionActiva.value));
 
-    // =========================================
-    // ARRAY DE OBJETOS: DATOS DE STACK
-    // =========================================
+    // DATOS DE STACK TECNOLÓGICO
     const tecnologias = [
       {
         id: 'java',
@@ -54,8 +51,8 @@ createApp({
       },
       {
         id: 'javascript',
-        nombre: 'JavaScript ',
-        tag: 'WEB/SCRIPTING',
+        nombre: 'JavaScript',
+        tag: 'WEB / SCRIPTING',
         descripcion: 'Lenguaje fundamental para desarrollo web. Dominio de sintaxis moderna ES6+, manejo asíncrono (Promises, async/await, Fetch API), manipulación del DOM y consumo dinámico de APIs RESTful.'
       },
       {
@@ -72,48 +69,44 @@ createApp({
       }
     ];
 
-    // Guarda el 'id' de la tarjeta que esté abierta (null = ninguna abierta)
     const stackSeleccionado = ref(null);
 
-    // Función para abrir o cerrar al hacer clic
     function toggleStack(id) {
       if (stackSeleccionado.value === id) {
-        stackSeleccionado.value = null; // Si ya estaba abierta, se cierra
+        stackSeleccionado.value = null;
       } else {
-        stackSeleccionado.value = id;   // Se abre la nueva
+        stackSeleccionado.value = id;
       }
       reproducirSonidoClick();
     }
 
-    // =========================================
-    // SECCIÓN PROYECTOS (ESTADO Y DATOS)
-    // =========================================
+    // REGISTRO DE PROYECTOS
     const proyectos = [
       {
         id: 'proyecto-1',
         numero: 'PRJ_01',
         nombre: 'Gestor Resi',
-        categoria: 'FULL STACK',
-        subtitulo: 'Plataforma integral de gestión sociosanitaria',
+        categoria: 'CLIENTE - SERVIDOR',
+        subtitulo: 'Plataforma integral de gestión sociosanitaria y control clínico',
         descripcion: 'Plataforma web diseñada a partir de mi experiencia previa en el sector sanitario para digitalizar la operativa integral de un centro residencial. Cuenta con arquitectura desacoplada: backend robusto en Java con Spring Boot para la lógica de negocio, control de acceso basado en roles (RBAC) y persistencia relacional. Permite la administración de expedientes de residentes, asignación de personal, control estricto de pautas de medicación y registro de partes diarios de enfermería, asegurando la trazabilidad clínica y operativa.',
-        stack: ['Java', 'Spring Boot','Spring Security', 'MySQL', 'Javascript', 'Bootstrap'],
+        stack: ['Java 17', 'Spring Boot', 'Spring Security', 'MySQL', 'JavaScript', 'Bootstrap'],
         imagen: './images/gestorREsi.png',
         demoUrl: 'https://gestion-resi.onrender.com/',
-        githubBack: 'https://github.com/AdriMartin93/gestion-residencia',  // <-- Repo Java/Spring
-        githubFront: 'https://github.com/AdriMartin93/gestion-resi-front' // <-- Repo Javascript
+        githubBack: 'https://github.com/AdriMartin93/gestion-residencia',
+        githubFront: 'https://github.com/AdriMartin93/gestion-resi-front'
       },
       {
         id: 'proyecto-2',
         numero: 'PRJ_02',
         nombre: 'Omnitrack',
-        categoria: 'FULL STACK',
-        subtitulo: 'Proyecto en desarrollo, sin demo disponible aún',
+        categoria: 'MICROSERVICES - DDD',
+        subtitulo: 'En desarrollo (Sin demo pública)',
         descripcion: 'Plataforma integral para centralizar y calendarizar el seguimiento de series, películas, videojuegos, manga y anime. Permite a los usuarios organizar su actividad, recibir alertas y cuentas atrás para próximos estrenos, y participar en una comunidad compartiendo listas y reseñas. A nivel técnico, el sistema se divide en microservicios independientes construidos con Spring Boot y Spring Cloud, aplicando Arquitectura Hexagonal para desacoplar las reglas de negocio de la infraestructura. Combina MySQL y MongoDB según la naturaleza de cada dato, con una hoja de ruta orientada a eventos mediante Apache Kafka para soportar alta concurrencia.',
-        stack: ['Java', 'Springboot', 'Spring Cloud', 'Spring Security','MySQL', 'MongoDB', 'Javascript'],
+        stack: ['Java 21', 'Spring Boot', 'Spring Cloud', 'Hexagonal Arch', 'MySQL', 'MongoDB', 'Apache Kafka'],
         imagen: './images/noFoto.png',
-        demoUrl: null, 
+        demoUrl: null,
         githubBack: 'https://github.com/AdriMartin93/omnitrack',
-        githubFront: null 
+        githubFront: null
       }
     ];
 
@@ -130,12 +123,10 @@ createApp({
       }
     }
 
-    // =========================================
-    // SECCIÓN CONTACTO Y ENVÍO REAL (FORMSPREE)
-    // =========================================
+    // GESTIÓN DE CONTACTO (FORMSPREE)
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjgkgdj';
 
-    const emailContacto = ref('adrianma1993@gmail.com'); 
+    const emailContacto = ref('adrianma1993@gmail.com');
     const emailCopiado = ref(false);
 
     function copiarEmail() {
@@ -202,9 +193,45 @@ createApp({
       }
     }
 
-    // =========================================
-    // SÍNTESIS DE AUDIO (Web Audio API)
-    // =========================================
+    // DESCARGA DIRECTA DE CV
+    // DESCARGA FORZADA DE CV (TIPO BINARIO PURO)
+    async function descargarCV(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      reproducirSonidoClick();
+
+      try {
+        const respuesta = await fetch('./docs/CV_Adrian_Martin.pdf');
+        if (!respuesta.ok) throw new Error('Error al leer el archivo');
+
+        const arrayBuffer = await respuesta.arrayBuffer();
+        // Al marcarlo como octet-stream, el navegador NO PUEDE abrirlo en el visor de PDFs
+        const blob = new Blob([arrayBuffer], { type: 'application/octet-stream' });
+        const urlBlob = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = urlBlob;
+        link.download = 'CV_Adrian_Martin.pdf';
+        document.body.appendChild(link);
+        link.click();
+        
+        setTimeout(() => {
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(urlBlob);
+        }, 200);
+      } catch (err) {
+        // Si estás en local con file:/// y fetch falla, al menos que lo abra en pestaña nueva sin sacarte de tu web
+        const fallback = document.createElement('a');
+        fallback.href = './docs/CV_Adrian_Martin.pdf';
+        fallback.download = 'CV_Adrian_Martin.pdf';
+        fallback.target = '_blank';
+        fallback.click();
+      }
+    }
+
+    // AUDIO SINTETIZADO (Web Audio API)
     let audioCtx = null;
 
     function getAudioContext() {
@@ -246,9 +273,7 @@ createApp({
       } catch (e) {}
     }
 
-    // =========================================
-    // CAMBIO DE PESTAÑAS Y SCROLL
-    // =========================================
+    // CAMBIO DE PESTAÑAS Y SCROLL INTELIGENTE
     function cambiarSeccion(nombreSeccion) {
       if (seccionActiva.value !== nombreSeccion) {
         seccionActiva.value = nombreSeccion;
@@ -268,13 +293,8 @@ createApp({
         const puedeBajar = scrollTop + clientHeight < scrollHeight - 3;
         const puedeSubir = scrollTop > 3;
 
-        if (e.deltaY > 0 && puedeBajar) {
-          return;
-        }
-
-        if (e.deltaY < 0 && puedeSubir) {
-          return;
-        }
+        if (e.deltaY > 0 && puedeBajar) return;
+        if (e.deltaY < 0 && puedeSubir) return;
       }
 
       const idxActual = secciones.indexOf(seccionActiva.value);
@@ -306,18 +326,15 @@ createApp({
       window.addEventListener('keydown', despertarAudio, { once: true });
     });
 
-    // ==========================================================
-    // EL RETURN: AQUÍ SE COMPARTE TODO CON EL HTML
-    // ==========================================================
     return {
       seccionActiva,
       indiceActivo,
       tituloActual,
       kanjiActual,
       cambiarSeccion,
-      tecnologias,        
-      stackSeleccionado,  
-      toggleStack,        
+      tecnologias,
+      stackSeleccionado,
+      toggleStack,
       emailContacto,
       emailCopiado,
       copiarEmail,
@@ -326,6 +343,7 @@ createApp({
       mensajeEnviado,
       errorEnvio,
       enviarFormulario,
+      descargarCV,
       proyectos,
       proyectoActivoId,
       proyectoSeleccionado,

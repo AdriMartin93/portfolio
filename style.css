@@ -9,6 +9,9 @@
   --nier-light-text: #eae8dc;
   --nier-muted: #7d796b;
   --nier-border: #4e4b42;
+  /* Color de acento táctico HUD NieR (ámbar militar) */
+  --nier-accent: #cfa84a;
+  --nier-accent-glow: rgba(207, 168, 74, 0.25);
 }
 
 * {
@@ -104,11 +107,12 @@ body.nier-theme::before {
   background-color: var(--nier-dark);
   color: var(--nier-light-text);
   border-color: var(--nier-dark);
+  box-shadow: inset 0 -2px 0 var(--nier-accent);
 }
 
 .nav-btn.active .icon {
   opacity: 1;
-  color: var(--nier-bg);
+  color: var(--nier-accent);
 }
 
 .section-indicator {
@@ -185,6 +189,11 @@ body.nier-theme::before {
   flex-shrink: 0;
 }
 
+.panel-tag {
+  color: var(--nier-accent);
+  font-size: 0.85rem;
+}
+
 .panel-body {
   padding: 24px;
   flex: 1;
@@ -228,7 +237,6 @@ body.nier-theme::before {
   margin-bottom: 2px;
 }
 
-/* Fila de metadatos tipo ficha de expediente militar */
 .about-meta-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -257,7 +265,6 @@ body.nier-theme::before {
   color: var(--nier-dark);
 }
 
-/* Párrafos narrativos */
 .about-narrative {
   display: flex;
   flex-direction: column;
@@ -276,7 +283,6 @@ body.nier-theme::before {
   padding: 1px 4px;
 }
 
-/* Tarjetas inferiores de valor diferencial */
 .about-highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -314,616 +320,8 @@ body.nier-theme::before {
   color: var(--nier-muted);
 }
 
-/* Adaptación para pantallas estrechas */
-@media (max-width: 800px) {
-  .about-meta-grid {
-    grid-template-columns: 1fr;
-  }
-  .about-highlights {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* LISTADO STACK TECNOLÓGICO */
-.stack-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.stack-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 14px;
-  background: rgba(78, 75, 66, 0.08);
-  border-left: 3px solid var(--nier-dark);
-  font-size: 1.05rem;
-}
-
-/* TARJETA DE ESTADO // PERFIL LATERAL (COLUMNA DERECHA) */
-.nier-status-card {
-  background: var(--nier-panel-light);
-  border: 1px solid var(--nier-border);
-  display: flex;
-  flex-direction: column;
-}
-
-.status-card-header {
-  background: var(--nier-dark);
-  color: var(--nier-light-text);
-  padding: 8px 14px;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-}
-
-.chip-status-tag {
-  font-size: 0.8rem;
-  color: var(--nier-bg);
-}
-
-.status-card-body {
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.status-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px dashed rgba(78, 75, 66, 0.4);
-  padding-bottom: 8px;
-}
-
-.operator-name {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.operator-lvl {
-  font-size: 0.9rem;
-  color: var(--nier-muted);
-  font-weight: 600;
-}
-
-/* CHECKLIST DE STACK // PERFIL LATERAL */
-.profile-summary {
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  color: var(--nier-muted);
-  margin-top: -4px;
-  font-weight: bold;
-}
-
-.stack-checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-top: 4px;
-}
-
-.check-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 6px 10px;
-  background: rgba(78, 75, 66, 0.06);
-  border-left: 2px solid var(--nier-dark);
-  font-size: 0.88rem;
-  transition: all 0.15s ease;
-  user-select: none;
-}
-
-.check-item:hover {
-  background: var(--nier-dark);
-  color: var(--nier-light-text);
-  transform: translateX(4px);
-}
-
-.check-box {
-  font-weight: 700;
-  color: var(--nier-dark);
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-}
-
-.check-item:hover .check-box {
-  color: #a4d293;
-}
-
-.check-name {
-  flex: 1;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-}
-
-.check-badge {
-  font-size: 0.72rem;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--nier-muted);
-  flex-shrink: 0;
-}
-
-.check-item:hover .check-badge {
-  color: var(--nier-bg);
-}
-
-.status-footer-badge {
-  margin-top: 6px;
-  border-top: 1px solid rgba(78, 75, 66, 0.3);
-  padding-top: 10px;
-  text-align: center;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  font-weight: bold;
-  color: var(--nier-dark);
-}
-
 /* =========================================
-   SECCIÓN DE PROYECTOS (ESTILO EXPEDIENTE)
-   ========================================= */
-
-.projects-body {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 20px;
-  height: 100%;
-  padding: 18px 24px;
-}
-
-/* Columna Izquierda */
-.projects-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.projects-subhead {
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  color: var(--nier-muted);
-  font-weight: bold;
-}
-
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.project-tab-card {
-  padding: 10px 12px;
-  background: rgba(78, 75, 66, 0.06);
-  border: 1px solid rgba(78, 75, 66, 0.25);
-  border-left: 3px solid var(--nier-dark);
-  transition: all 0.15s ease;
-  user-select: none;
-}
-
-.project-tab-card:hover {
-  background: rgba(78, 75, 66, 0.12);
-  transform: translateX(4px);
-}
-
-.project-tab-card.active {
-  background: var(--nier-dark);
-  color: var(--nier-light-text);
-  border-color: var(--nier-dark);
-  box-shadow: 2px 2px 0 rgba(78, 75, 66, 0.3);
-}
-
-.tab-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.72rem;
-  letter-spacing: 1px;
-  opacity: 0.8;
-  margin-bottom: 2px;
-}
-
-.tab-title {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 1px;
-}
-
-/* Columna Derecha (Ficha detallada) */
-.project-details-view {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: rgba(78, 75, 66, 0.03);
-  padding: 12px 16px;
-  border: 1px solid rgba(78, 75, 66, 0.2);
-}
-
-.detail-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-
-.detail-code {
-  font-size: 0.72rem;
-  letter-spacing: 1.5px;
-  color: var(--nier-muted);
-  font-weight: bold;
-}
-
-.detail-title {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin: 2px 0;
-}
-
-.detail-subtitle {
-  font-size: 0.85rem;
-  color: var(--nier-muted);
-}
-
-/* Botones de Render y GitHub */
-.detail-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  width: 100%;
-  justify-content: flex-start;
-}
-
-.action-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-decoration: none;
-  transition: all 0.15s ease;
-  border: 1px solid var(--nier-dark);
-  white-space: nowrap;
-}
-
-.render-btn {
-  background: var(--nier-dark);
-  color: var(--nier-light-text);
-}
-
-.render-btn:hover {
-  background: var(--nier-dark-hover);
-  transform: translateY(-2px);
-}
-
-.github-btn {
-  background: transparent;
-  color: var(--nier-dark);
-}
-
-.github-btn:hover {
-  background: rgba(78, 75, 66, 0.12);
-  transform: translateY(-2px);
-}
-
-.btn-arrow {
-  font-size: 0.95rem;
-}
-
-/* Marco de la imagen de proyecto */
-.project-preview-frame {
-  position: relative;
-  width: 100%;
-  height: 220px; /* Le damos más holgura vertical */
-  background: rgba(40, 38, 33, 0.95); /* Fondo oscuro táctico */
-  overflow: hidden;
-  border: 1px solid var(--nier-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preview-img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain; /* Muestra toda la imagen cuadrada sin recortar ni un píxel */
-  display: block;
-  opacity: 0.95;
-  filter: contrast(102%);
-  transition: transform 0.3s ease;
-}
-
-.project-preview-frame:hover .preview-img {
-  transform: scale(1.02);
-}
-
-.frame-corner {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--nier-bg);
-  pointer-events: none;
-}
-
-.frame-corner.top-left {
-  top: 4px;
-  left: 4px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.frame-corner.bottom-right {
-  bottom: 4px;
-  right: 4px;
-  border-left: none;
-  border-top: none;
-}
-
-/* Bloque descriptivo */
-.project-desc-block {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.desc-label {
-  font-size: 0.72rem;
-  letter-spacing: 1.5px;
-  color: var(--nier-muted);
-  font-weight: bold;
-}
-
-.project-desc-block p {
-  font-size: 0.88rem;
-  line-height: 1.4;
-  color: var(--nier-dark);
-}
-
-/* Etiquetas del Stack */
-.project-tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 2px;
-}
-
-.tag-badge {
-  background: rgba(78, 75, 66, 0.12);
-  border: 1px solid rgba(78, 75, 66, 0.3);
-  padding: 3px 8px;
-  font-size: 0.75rem;
-  font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 0.5px;
-}
-
-/* Adaptación para pantallas estrechas */
-@media (max-width: 850px) {
-  .projects-body {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .detail-header {
-    flex-direction: column;
-  }
-  .detail-actions {
-    width: 100%;
-  }
-  .action-btn {
-    flex: 1;
-    justify-content: center;
-  }
-}
-
-/* FOOTER */
-.nier-footer {
-  border-top: 2px solid var(--nier-border);
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-}
-
-.footer-msg {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.cursor-bar {
-  display: inline-block;
-  width: 6px;
-  height: 15px;
-  background-color: var(--nier-dark);
-}
-
-.footer-controls {
-  display: flex;
-  gap: 16px;
-  color: var(--nier-muted);
-}
-
-/* =========================================
-   SISTEMA DE ENGRANAJES DE FONDO
-   ========================================= */
-
-.nier-bg-decor-container {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.gear-wrapper {
-  position: absolute;
-  opacity: 0.18;
-}
-
-/* 1. CUADRANTE CENTRO-IZQUIERDA (Grande) */
-.gear-main {
-  width: 760px;
-  height: 760px;
-  top: 48%;
-  left: 8%;
-  transform: translateY(-50%);
-}
-
-/* 2. CUADRANTE SUPERIOR DERECHO (Mediano) */
-.gear-top-right {
-  width: 520px;
-  height: 520px;
-  top: -120px;
-  right: -100px;
-  left: auto;
-  bottom: auto;
-}
-
-/* 3. CUADRANTE INFERIOR IZQUIERDO (Pequeño) */
-.gear-bottom-left {
-  width: 380px;
-  height: 380px;
-  bottom: -100px;
-  left: -80px;
-  top: auto;
-  right: auto;
-}
-
-/* 4. CUADRANTE INFERIOR DERECHO (Grande) */
-.gear-bottom-right {
-  width: 680px;
-  height: 680px;
-  bottom: -180px;
-  right: -140px;
-  top: auto;
-  left: auto;
-}
-
-/* 5. ENGRANAJE CENTRAL-DERECHO */
-.gear-mid-center {
-  width: 460px;
-  height: 460px;
-  top: 54%;
-  left: 63%;
-  transform: translate(-50%, -50%);
-}
-
-.rotate-counter-fast {
-  animation: spinLeft 80s linear infinite;
-}
-
-.gear-svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Trazos SVG */
-.gear-wrapper .ring {
-  fill: none;
-  stroke: var(--nier-dark);
-}
-
-.gear-wrapper .thin {
-  stroke-width: 1.2px;
-}
-
-.gear-wrapper .solid {
-  stroke-width: 2.2px;
-}
-
-.gear-wrapper .dashed {
-  stroke-dasharray: 5 6;
-  stroke-width: 1.8px;
-}
-
-.gear-wrapper .dashed-wide {
-  stroke-dasharray: 18 12;
-  stroke-width: 2.2px;
-}
-
-.gear-wrapper .gear-teeth {
-  stroke-dasharray: 6 15;
-  stroke-width: 8px;
-}
-
-.gear-wrapper .spokes line {
-  stroke: var(--nier-dark);
-  stroke-width: 1.2px;
-  stroke-dasharray: 8 8;
-}
-
-.rotate-clockwise {
-  animation: spinRight 200s linear infinite;
-}
-
-.rotate-counter {
-  animation: spinLeft 140s linear infinite;
-}
-
-.rotate-clockwise-fast {
-  animation: spinRight 90s linear infinite;
-}
-
-.rotate-counter-slow {
-  animation: spinLeft 240s linear infinite;
-}
-
-@keyframes spinRight {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes spinLeft {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
-
-/* =========================================
-   PUNTERO GAMING // RETÍCULA TÁCTICA HUD
-   ========================================= */
-
-html,
-body,
-.nier-theme {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M6 10 V6 H10 M18 6 H22 V10 M22 18 V22 H18 M10 22 H6 V18' stroke='%234e4b42' stroke-width='2' fill='none' stroke-linecap='square'/%3E%3Ccircle cx='14' cy='14' r='2' fill='%234e4b42'/%3E%3C/svg%3E") 14 14, crosshair;
-}
-
-button,
-a,
-.nav-btn,
-[role="button"],
-.stack-header,
-.stack-card,
-.check-item,
-.contact-card-btn,
-.email-copy-btn,
-.submit-btn,
-.project-tab-card,
-.action-btn {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M8 11 V8 H11 M17 8 H20 V11 M20 17 V20 H17 M11 20 H8 V17' stroke='%2335332c' stroke-width='2' fill='none' stroke-linecap='square'/%3E%3Cpolygon points='14,9 19,14 14,19 9,14' fill='%234e4b42'/%3E%3Ccircle cx='14' cy='14' r='1.5' fill='%23eae8dc'/%3E%3C/svg%3E") 14 14, pointer !important;
-}
-
-/* =========================================
-   STACK TECNOLÓGICO INTERACTIVO (ESTILO NIER)
+   STACK TECNOLÓGICO INTERACTIVO
    ========================================= */
 
 .stack-accordion {
@@ -976,16 +374,17 @@ a,
 .stack-card.selected .stack-header {
   background-color: var(--nier-dark);
   color: var(--nier-light-text);
+  border-left: 3px solid var(--nier-accent);
 }
 
 .stack-card.selected .tech-indicator {
   opacity: 1;
-  color: var(--nier-bg);
+  color: var(--nier-accent);
   transform: rotate(90deg);
 }
 
 .stack-card.selected .tech-badge {
-  color: var(--nier-light-text);
+  color: var(--nier-accent);
 }
 
 .stack-details {
@@ -1014,14 +413,498 @@ a,
 }
 
 @keyframes expandSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   SECCIÓN DE PROYECTOS (ESTILO EXPEDIENTE)
+   ========================================= */
+
+.projects-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  height: 100%;
+  padding: 18px 24px;
+}
+
+.projects-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projects-subhead {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-tab-card {
+  padding: 10px 12px;
+  background: rgba(78, 75, 66, 0.06);
+  border: 1px solid rgba(78, 75, 66, 0.25);
+  border-left: 3px solid var(--nier-dark);
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.project-tab-card:hover {
+  background: rgba(78, 75, 66, 0.12);
+  transform: translateX(4px);
+}
+
+.project-tab-card.active {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border-color: var(--nier-dark);
+  border-left: 4px solid var(--nier-accent);
+  box-shadow: 2px 2px 0 rgba(78, 75, 66, 0.3);
+}
+
+.tab-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+.project-tab-card.active .tab-cat {
+  color: var(--nier-accent);
+}
+
+.tab-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Columna Derecha (Ficha detallada) */
+.project-details-view {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(78, 75, 66, 0.03);
+  padding: 14px 18px;
+  border: 1px solid rgba(78, 75, 66, 0.2);
+}
+
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.detail-code {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.detail-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 2px 0;
+}
+
+.detail-subtitle {
+  font-size: 0.88rem;
+  color: var(--nier-muted);
+}
+
+/* Botones de Acción (Deploy y Git) */
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: 1px solid var(--nier-dark);
+  white-space: nowrap;
+}
+
+.render-btn {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border-left: 3px solid var(--nier-accent);
+}
+
+.render-btn:hover {
+  background: var(--nier-dark-hover);
+  box-shadow: 0 0 8px var(--nier-accent-glow);
+  transform: translateY(-2px);
+}
+
+.github-btn {
+  background: transparent;
+  color: var(--nier-dark);
+}
+
+.github-btn:hover {
+  background: rgba(78, 75, 66, 0.14);
+  transform: translateY(-2px);
+}
+
+.btn-arrow {
+  font-size: 0.95rem;
+}
+
+/* Visualizador de imagen del proyecto: Adaptado para capturas completas */
+.project-preview-frame {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: rgba(40, 38, 33, 0.95);
+  overflow: hidden;
+  border: 1px solid var(--nier-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.95;
+  filter: contrast(102%);
+  transition: transform 0.3s ease;
+}
+
+.project-preview-frame:hover .preview-img {
+  transform: scale(1.02);
+}
+
+.frame-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--nier-bg);
+  pointer-events: none;
+}
+
+.frame-corner.top-left {
+  top: 4px;
+  left: 4px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame-corner.bottom-right {
+  bottom: 4px;
+  right: 4px;
+  border-left: none;
+  border-top: none;
+}
+
+.project-desc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.desc-label {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.project-desc-block p {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--nier-dark);
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.tag-badge {
+  background: rgba(78, 75, 66, 0.12);
+  border: 1px solid rgba(78, 75, 66, 0.3);
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   PANEL LATERAL DINÁMICO & TELEMETRÍA (COLUMNA DERECHA)
+   ========================================= */
+
+.nier-status-card {
+  background: var(--nier-panel-light);
+  border: 1px solid var(--nier-border);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.status-card-header {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+}
+
+.chip-status-tag {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: var(--nier-accent);
+  font-weight: bold;
+}
+
+.status-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 480px;
+}
+
+.status-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed rgba(78, 75, 66, 0.4);
+  padding-bottom: 8px;
+}
+
+.operator-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.operator-lvl {
+  font-size: 0.9rem;
+  color: var(--nier-accent);
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Subpanel con animación de cambio suave */
+.dynamic-subpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  animation: fadeInPanel 0.25s ease-out;
+  flex: 1;
+}
+
+@keyframes fadeInPanel {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-summary {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+/* Filas de telemetría de metadatos */
+.telemetry-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+  background: rgba(78, 75, 66, 0.05);
+  border-left: 2px solid var(--nier-dark);
+}
+
+.telemetry-label {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.telemetry-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--nier-dark);
+}
+
+.highlight-accent {
+  color: var(--nier-dark);
+  font-weight: 700;
+}
+
+.compact-tags {
+  margin-top: 4px;
+}
+
+/* Checklist de Stack en barra lateral */
+.stack-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 8px;
+  background: rgba(78, 75, 66, 0.06);
+  border-left: 2px solid var(--nier-dark);
+  font-size: 0.85rem;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.check-item:hover {
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border-left-color: var(--nier-accent);
+  transform: translateX(3px);
+}
+
+.check-box {
+  font-weight: 700;
+  color: var(--nier-dark);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.check-item:hover .check-box {
+  color: var(--nier-accent);
+}
+
+.check-name {
+  flex: 1;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.5px;
+}
+
+.check-badge {
+  font-size: 0.7rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--nier-muted);
+  flex-shrink: 0;
+}
+
+.check-item:hover .check-badge {
+  color: var(--nier-bg);
+}
+
+/* Radar status en contacto */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(207, 168, 74, 0.12);
+  border: 1px solid var(--nier-accent);
+  color: var(--nier-dark);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 1.5px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--nier-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--nier-accent);
+  display: inline-block;
+  animation: pulseBeacon 1.8s infinite;
+}
+
+@keyframes pulseBeacon {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* BOTÓN FIJO DE DESCARGA CV */
+.cv-action-area {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(78, 75, 66, 0.4);
+}
+
+.btn-cv-tactical {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border: 1px solid var(--nier-dark);
+  border-left: 4px solid var(--nier-accent);
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  transition: all 0.2s ease;
+}
+
+.btn-cv-tactical:hover {
+  background: var(--nier-dark-hover);
+  border-color: var(--nier-accent);
+  box-shadow: 0 0 10px var(--nier-accent-glow), 2px 2px 0 rgba(78, 75, 66, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-cv-tactical .cv-icon {
+  color: var(--nier-accent);
+  font-size: 1.1rem;
 }
 
 /* =========================================
@@ -1068,6 +951,7 @@ a,
   background: var(--nier-dark);
   color: var(--nier-light-text);
   border-color: var(--nier-dark);
+  border-left: 3px solid var(--nier-accent);
   transform: translateX(4px);
 }
 
@@ -1201,6 +1085,7 @@ a,
 
 .submit-btn:hover {
   background: var(--nier-dark-hover);
+  border-color: var(--nier-accent);
   box-shadow: 3px 3px 0 rgba(78, 75, 66, 0.3);
 }
 
@@ -1212,11 +1097,204 @@ a,
 .form-success-banner {
   background: rgba(78, 75, 66, 0.15);
   border: 1px solid var(--nier-dark);
+  border-left: 3px solid #7ea36f;
   padding: 8px 12px;
   font-size: 0.8rem;
   letter-spacing: 1px;
   text-align: center;
   animation: fadeIn 0.3s ease;
+}
+
+.form-error-banner {
+  background: rgba(140, 50, 50, 0.15);
+  border: 1px solid #8c3232;
+  border-left: 3px solid #b33939;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.nier-footer {
+  border-top: 2px solid var(--nier-border);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.footer-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cursor-bar {
+  display: inline-block;
+  width: 6px;
+  height: 15px;
+  background-color: var(--nier-dark);
+}
+
+/* =========================================
+   SISTEMA DE ENGRANAJES DE FONDO
+   ========================================= */
+
+.nier-bg-decor-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gear-wrapper {
+  position: absolute;
+  opacity: 0.18;
+}
+
+.gear-main {
+  width: 760px;
+  height: 760px;
+  top: 48%;
+  left: 8%;
+  transform: translateY(-50%);
+}
+
+.gear-top-right {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  right: -100px;
+  left: auto;
+  bottom: auto;
+}
+
+.gear-bottom-left {
+  width: 380px;
+  height: 380px;
+  bottom: -100px;
+  left: -80px;
+  top: auto;
+  right: auto;
+}
+
+.gear-bottom-right {
+  width: 680px;
+  height: 680px;
+  bottom: -180px;
+  right: -140px;
+  top: auto;
+  left: auto;
+}
+
+.gear-mid-center {
+  width: 460px;
+  height: 460px;
+  top: 54%;
+  left: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.rotate-counter-fast {
+  animation: spinLeft 80s linear infinite;
+}
+
+.gear-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.gear-wrapper .ring {
+  fill: none;
+  stroke: var(--nier-dark);
+}
+
+.gear-wrapper .thin {
+  stroke-width: 1.2px;
+}
+
+.gear-wrapper .solid {
+  stroke-width: 2.2px;
+}
+
+.gear-wrapper .dashed {
+  stroke-dasharray: 5 6;
+  stroke-width: 1.8px;
+}
+
+.gear-wrapper .dashed-wide {
+  stroke-dasharray: 18 12;
+  stroke-width: 2.2px;
+}
+
+.gear-wrapper .gear-teeth {
+  stroke-dasharray: 6 15;
+  stroke-width: 8px;
+}
+
+.gear-wrapper .spokes line {
+  stroke: var(--nier-dark);
+  stroke-width: 1.2px;
+  stroke-dasharray: 8 8;
+}
+
+.rotate-clockwise {
+  animation: spinRight 200s linear infinite;
+}
+
+.rotate-counter {
+  animation: spinLeft 140s linear infinite;
+}
+
+.rotate-clockwise-fast {
+  animation: spinRight 90s linear infinite;
+}
+
+.rotate-counter-slow {
+  animation: spinLeft 240s linear infinite;
+}
+
+@keyframes spinRight {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinLeft {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* =========================================
+   PUNTERO GAMING // RETÍCULA TÁCTICA HUD
+   ========================================= */
+
+html,
+body,
+.nier-theme {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M6 10 V6 H10 M18 6 H22 V10 M22 18 V22 H18 M10 22 H6 V18' stroke='%234e4b42' stroke-width='2' fill='none' stroke-linecap='square'/%3E%3Ccircle cx='14' cy='14' r='2' fill='%234e4b42'/%3E%3C/svg%3E") 14 14, crosshair;
+}
+
+button,
+a,
+.nav-btn,
+[role="button"],
+.stack-header,
+.stack-card,
+.check-item,
+.contact-card-btn,
+.email-copy-btn,
+.submit-btn,
+.project-tab-card,
+.action-btn,
+.btn-cv-tactical {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M8 11 V8 H11 M17 8 H20 V11 M20 17 V20 H17 M11 20 H8 V17' stroke='%2335332c' stroke-width='2' fill='none' stroke-linecap='square'/%3E%3Cpolygon points='14,9 19,14 14,19 9,14' fill='%234e4b42'/%3E%3Ccircle cx='14' cy='14' r='1.5' fill='%23eae8dc'/%3E%3C/svg%3E") 14 14, pointer !important;
 }
 
 /* =========================================
@@ -1239,11 +1317,34 @@ a,
 
   .nier-main-container {
     order: 1;
-    height: 440px;
+    height: 480px;
+  }
+}
+
+@media (max-width: 850px) {
+  .projects-body {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .detail-header {
+    flex-direction: column;
+  }
+  .detail-actions {
+    width: 100%;
+  }
+  .action-btn {
+    flex: 1;
+    justify-content: center;
   }
 }
 
 @media (max-width: 800px) {
+  .about-meta-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
   .contact-body {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1277,7 +1378,7 @@ a,
   }
 
   .nier-main-container {
-    height: 400px;
+    height: 430px;
   }
 
   .nier-footer {
@@ -1285,4 +1386,63 @@ a,
     gap: 8px;
     text-align: center;
   }
+}
+
+/* AJUSTES FINALES CV Y LATERAL */
+.cv-action-area {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(78, 75, 66, 0.4);
+}
+
+.btn-cv-tactical {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  border: 1px solid var(--nier-dark);
+  border-left: 4px solid var(--nier-accent);
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  transition: all 0.2s ease;
+}
+
+.btn-cv-tactical:hover {
+  background: var(--nier-dark-hover);
+  border-color: var(--nier-accent);
+  box-shadow: 0 0 10px var(--nier-accent-glow), 2px 2px 0 rgba(78, 75, 66, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-cv-tactical .cv-icon {
+  color: var(--nier-accent);
+  font-size: 1.1rem;
+}
+
+.telemetry-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+  background: rgba(78, 75, 66, 0.05);
+  border-left: 2px solid var(--nier-dark);
+}
+
+.telemetry-label {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.telemetry-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--nier-dark);
 }
