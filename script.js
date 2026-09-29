@@ -90,7 +90,7 @@ createApp({
         subtitulo: 'Plataforma integral de gestión sociosanitaria y control clínico',
         descripcion: 'Plataforma web diseñada a partir de mi experiencia previa en el sector sanitario para digitalizar la operativa integral de un centro residencial. Cuenta con arquitectura desacoplada: backend robusto en Java con Spring Boot para la lógica de negocio, control de acceso basado en roles (RBAC) y persistencia relacional. Permite la administración de expedientes de residentes, asignación de personal, control estricto de pautas de medicación y registro de partes diarios de enfermería, asegurando la trazabilidad clínica y operativa.',
         stack: ['Java 17', 'Spring Boot', 'Spring Security', 'MySQL', 'JavaScript', 'Bootstrap'],
-        imagen: './images/gestorREsi.png',
+        imagen: './images/gestorResi.png',
         demoUrl: 'https://gestion-resi.onrender.com/',
         githubBack: 'https://github.com/AdriMartin93/gestion-residencia',
         githubFront: 'https://github.com/AdriMartin93/gestion-resi-front'
