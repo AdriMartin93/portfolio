@@ -140,7 +140,8 @@
 
             <!-- Banda decorativa de triángulos -->
             <div class="nier-divider">
-                <span class="dots-triangles">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</span>
+                <span class="dots-triangles">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾
+                    ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</span>
             </div>
 
             <!-- Título de sección activa con subtítulo -->
@@ -176,26 +177,22 @@
                             <!-- Texto de presentación despejado -->
                             <div class="about-narrative">
                                 <p>
-                                    Mi camino hacia el desarrollo de software comenzó tras casi una década de
-                                    trayectoria profesional en el ámbito sanitario como técnico auxiliar. Durante esos
-                                    años desarrollé una alta capacidad de <strong>trabajo en equipo multidisciplinar</strong>,
-                                    rigor organizativo y una sólida templanza en la <strong>resolución de situaciones críticas</strong>
-                                    y trato directo con las personas.
+                                    ¡Buenas! Soy Adrián. Antes de meterme al mundo del desarrollo trabajé casi una
+                                    década en el <strong>sector sanitario</strong> como técnico auxiliar. Fue una etapa
+                                    que me curtió a nivel personal: aprendí a gestionar la presión, a resolver problemas
+                                    con calma y a coordinarme a diario con equipos grandes.
                                 </p>
                                 <p>
-                                    Motivado por mi constante inquietud tecnológica y el objetivo de asumir nuevos retos
-                                    donde el impacto y el aprendizaje diario no tuvieran un techo prefijado, en 2023
-                                    tomé la decisión de reorientar mi carrera completando el grado en <strong>Desarrollo
-                                    de Aplicaciones Web (DAW)</strong>.
+                                    En 2023 di el paso definitivo hacia la tecnología estudiando el grado de
+                                    <strong>DAW</strong>. Mi foco principal está en el <strong>backend</strong> con Java
+                                    y el ecosistema Spring Boot, diseñando APIs y bases de datos limpias. A la vez, me
+                                    muevo con soltura en el <strong>frontend</strong> construyendo interfaces modernas con JavaScript y
+                                    Vue o React.
                                 </p>
                                 <p>
-                                    Cuento con formación completa de extremo a extremo: aunque siento especial afinidad
-                                    por la lógica de servidor y el <strong>backend</strong> (Java, Spring Boot, bases de
-                                    datos y arquitectura limpia), me desenvuelvo con soltura construyendo interfaces
-                                    dinámicas en <strong>frontend</strong> (JavaScript, React, Vue.js). Aporto al equipo
-                                    madurez laboral, versatilidad para adaptarme a cualquier capa del proyecto y la
-                                    motivación de quien ha elegido conscientemente esta profesión para sumar desde el
-                                    primer día.
+                                    Aporto la madurez de años de experiencia laboral previa, ganas constantes de seguir
+                                    sumando conocimientos técnicos y la motivación de incorporarme a un equipo donde
+                                    aportar valor desde el primer día.
                                 </p>
                             </div>
 
@@ -203,15 +200,18 @@
                             <div class="about-highlights">
                                 <div class="highlight-card">
                                     <strong>TEMPLANZA & RESOLUCIÓN</strong>
-                                    <span>Gestión tranquila y analítica ante imprevistos, adquirida en entornos de alta exigencia.</span>
+                                    <span>Gestión tranquila y analítica ante imprevistos, adquirida en entornos de alta
+                                        exigencia.</span>
                                 </div>
                                 <div class="highlight-card">
                                     <strong>COMUNICACIÓN & EMPATÍA</strong>
-                                    <span>Hábito constante de interactuar con perfiles diversos y facilitar dinámicas de trabajo sanas.</span>
+                                    <span>Hábito constante de interactuar con perfiles diversos y facilitar dinámicas de
+                                        trabajo sanas.</span>
                                 </div>
                                 <div class="highlight-card">
                                     <strong>VERSATILIDAD TÉCNICA</strong>
-                                    <span>Capacidad para resolver tareas tanto en servidor como en cliente con mentalidad práctica.</span>
+                                    <span>Capacidad para resolver tareas tanto en servidor como en cliente con
+                                        mentalidad práctica.</span>
                                 </div>
                             </div>
 
@@ -277,7 +277,8 @@
                             <div class="project-details-view" v-if="proyectoSeleccionado">
                                 <div class="detail-header">
                                     <div class="detail-title-group">
-                                        <span class="detail-code">ID: {{ proyectoSeleccionado.numero }} · {{ proyectoSeleccionado.categoria }}</span>
+                                        <span class="detail-code">ID: {{ proyectoSeleccionado.numero }} · {{
+                                            proyectoSeleccionado.categoria }}</span>
                                         <h3 class="detail-title">{{ proyectoSeleccionado.nombre }}</h3>
                                         <p class="detail-subtitle">{{ proyectoSeleccionado.subtitulo }}</p>
                                     </div>
@@ -488,13 +489,21 @@
                     <div class="dynamic-subpanel" v-else-if="seccionActiva === 'stack'">
                         <span class="profile-summary">MÓDULOS DE ARQUITECTURA</span>
                         <div class="stack-checklist">
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Java 17 / 21</span><span class="check-badge">CORE</span></div>
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Spring Boot & Cloud</span><span class="check-badge">FRAMEWORK</span></div>
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Hexagonal / DDD</span><span class="check-badge">ARCH</span></div>
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">MySQL & PostgreSQL</span><span class="check-badge">RDBMS</span></div>
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">MongoDB</span><span class="check-badge">NOSQL</span></div>
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">JavaScript, React & Vue</span><span class="check-badge">FRONTEND</span></div>
-                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Docker & Git</span><span class="check-badge">DEVOPS</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Java 17 /
+                                    21</span><span class="check-badge">CORE</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Spring
+                                    Boot & Cloud</span><span class="check-badge">FRAMEWORK</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Hexagonal
+                                    / DDD</span><span class="check-badge">ARCH</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">MySQL &
+                                    PostgreSQL</span><span class="check-badge">RDBMS</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span
+                                    class="check-name">MongoDB</span><span class="check-badge">NOSQL</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span
+                                    class="check-name">JavaScript, React & Vue</span><span
+                                    class="check-badge">FRONTEND</span></div>
+                            <div class="check-item"><span class="check-box">[✓]</span><span class="check-name">Docker &
+                                    Git</span><span class="check-badge">DEVOPS</span></div>
                         </div>
                     </div>
 
@@ -517,7 +526,8 @@
                         </div>
                         <div class="telemetry-row">
                             <span class="telemetry-label">ESTADO DEL DESPLIEGUE:</span>
-                            <span class="telemetry-value">{{ proyectoSeleccionado.demoUrl ? 'Activo en Render' : 'Desarrollo Activo (Local)' }}</span>
+                            <span class="telemetry-value">{{ proyectoSeleccionado.demoUrl ? 'Activo en Render' :
+                                'Desarrollo Activo (Local)' }}</span>
                         </div>
                     </div>
 
@@ -540,9 +550,7 @@
 
                     <!-- BOTÓN DE DESCARGA CV FIJO Y DIRECTO -->
                     <div class="cv-action-area">
-                        <a href="./docs/CV_Adrian_Martin.pdf" 
-                           class="btn-cv-tactical" 
-                           @click.prevent="descargarCV">
+                        <a href="./docs/CV_Adrian_Martin.pdf" class="btn-cv-tactical" @click.prevent="descargarCV">
                             <span>CV (PDF)</span>
                             <span class="cv-icon">⬇</span>
                         </a>
