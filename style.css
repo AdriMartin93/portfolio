@@ -9,7 +9,6 @@
   --nier-light-text: #eae8dc;
   --nier-muted: #7d796b;
   --nier-border: #4e4b42;
-  /* Color de acento táctico HUD NieR (ámbar militar) */
   --nier-accent: #cfa84a;
   --nier-accent-glow: rgba(207, 168, 74, 0.25);
 }
@@ -156,7 +155,7 @@ body.nier-theme::before {
   height: clamp(560px, 64vh, 720px);
 }
 
-/* PISTA DESLIZANTE VERTICAL CON REBOTE MECÁNICO */
+/* PISTA DESLIZANTE VERTICAL */
 .slider-track {
   display: flex;
   flex-direction: column;
@@ -166,7 +165,6 @@ body.nier-theme::before {
   will-change: transform;
 }
 
-/* CADA DIAPOSITIVA */
 .slide-item {
   height: 100%;
   min-height: 100%;
@@ -413,53 +411,48 @@ body.nier-theme::before {
 }
 
 @keyframes expandSlide {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================
-   SECCIÓN DE PROYECTOS (ESTILO EXPEDIENTE)
+   SECCIÓN DE PROYECTOS (ESTILO ACORDEÓN INLINE)
    ========================================= */
 
-.projects-body {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 20px;
-  height: 100%;
+.projects-accordion-body {
   padding: 18px 24px;
 }
 
-.projects-sidebar {
+.projects-accordion-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
-.projects-subhead {
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  color: var(--nier-muted);
-  font-weight: bold;
-}
-
-.projects-list {
+.project-accordion-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .project-tab-card {
-  padding: 10px 12px;
-  background: rgba(78, 75, 66, 0.06);
+  padding: 12px 16px;
+  background: rgba(78, 75, 66, 0.08);
   border: 1px solid rgba(78, 75, 66, 0.25);
   border-left: 3px solid var(--nier-dark);
   transition: all 0.15s ease;
   user-select: none;
+  cursor: pointer;
 }
 
 .project-tab-card:hover {
-  background: rgba(78, 75, 66, 0.12);
-  transform: translateX(4px);
+  background: rgba(78, 75, 66, 0.15);
 }
 
 .project-tab-card.active {
@@ -467,7 +460,6 @@ body.nier-theme::before {
   color: var(--nier-light-text);
   border-color: var(--nier-dark);
   border-left: 4px solid var(--nier-accent);
-  box-shadow: 2px 2px 0 rgba(78, 75, 66, 0.3);
 }
 
 .tab-meta {
@@ -476,28 +468,43 @@ body.nier-theme::before {
   font-size: 0.72rem;
   letter-spacing: 1px;
   opacity: 0.8;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .project-tab-card.active .tab-cat {
   color: var(--nier-accent);
 }
 
+.tab-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .tab-title {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
   letter-spacing: 1px;
 }
 
-/* Columna Derecha (Ficha detallada) */
-.project-details-view {
+.accordion-arrow {
+  font-size: 0.8rem;
+  color: var(--nier-accent);
+}
+
+/* Ficha desplegada justo debajo del botón */
+.project-details-view.inline-detail {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: rgba(78, 75, 66, 0.03);
-  padding: 14px 18px;
-  border: 1px solid rgba(78, 75, 66, 0.2);
+  background: rgba(78, 75, 66, 0.04);
+  padding: 16px 20px;
+  border-left: 3px solid var(--nier-accent);
+  border-right: 1px solid rgba(78, 75, 66, 0.2);
+  border-bottom: 1px solid rgba(78, 75, 66, 0.2);
+  margin-bottom: 8px;
+  animation: fadeInPanel 0.25s ease-out;
 }
 
 .detail-header {
@@ -577,7 +584,7 @@ body.nier-theme::before {
   font-size: 0.95rem;
 }
 
-/* Visualizador de imagen del proyecto: Adaptado para capturas completas */
+/* Visualizador de imagen */
 .project-preview-frame {
   position: relative;
   width: 100%;
@@ -631,20 +638,37 @@ body.nier-theme::before {
 .project-desc-block {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
+  margin: 4px 0;
 }
 
-.desc-label {
+.desc-bullet {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(78, 75, 66, 0.04);
+  border-left: 2px solid var(--nier-dark);
+  padding: 6px 10px;
+}
+
+.bullet-tag {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.72rem;
   letter-spacing: 1.5px;
-  color: var(--nier-muted);
-  font-weight: bold;
+  font-weight: 700;
+  padding: 1px 6px;
+  margin-bottom: 2px;
 }
 
-.project-desc-block p {
-  font-size: 0.9rem;
-  line-height: 1.45;
+.desc-bullet p {
+  font-size: 0.88rem;
+  line-height: 1.35;
   color: var(--nier-dark);
+  margin: 0;
 }
 
 .project-tech-tags {
@@ -725,7 +749,6 @@ body.nier-theme::before {
   font-family: 'Rajdhani', sans-serif;
 }
 
-/* Subpanel con animación de cambio suave */
 .dynamic-subpanel {
   display: flex;
   flex-direction: column;
@@ -735,8 +758,15 @@ body.nier-theme::before {
 }
 
 @keyframes fadeInPanel {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .profile-summary {
@@ -746,7 +776,6 @@ body.nier-theme::before {
   font-weight: bold;
 }
 
-/* Filas de telemetría de metadatos */
 .telemetry-row {
   display: flex;
   flex-direction: column;
@@ -778,7 +807,6 @@ body.nier-theme::before {
   margin-top: 4px;
 }
 
-/* Checklist de Stack en barra lateral */
 .stack-checklist {
   display: flex;
   flex-direction: column;
@@ -839,7 +867,6 @@ body.nier-theme::before {
   color: var(--nier-bg);
 }
 
-/* Radar status en contacto */
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -865,12 +892,22 @@ body.nier-theme::before {
 }
 
 @keyframes pulseBeacon {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.25); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
 }
 
-/* BOTÓN FIJO DE DESCARGA CV */
 .cv-action-area {
   margin-top: auto;
   padding-top: 12px;
@@ -905,6 +942,38 @@ body.nier-theme::before {
 .btn-cv-tactical .cv-icon {
   color: var(--nier-accent);
   font-size: 1.1rem;
+}
+
+/* =========================================
+   BARRA MÓVIL FIJA DE DESCARGA CV (ESTILO BASE)
+   ========================================= */
+
+/* Por defecto en escritorio SIEMPRE oculta */
+.mobile-cv-bottom-bar {
+  display: none;
+}
+
+.btn-cv-tactical-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  background-color: #4b483f;
+  color: #dad4bb;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  padding: 11px 18px;
+  border: 1px solid #736d5c;
+  box-shadow: inset 0 0 0 1px #2b2924;
+}
+
+.btn-cv-tactical-mobile:active {
+  background-color: #2b2924;
+  color: #ffffff;
 }
 
 /* =========================================
@@ -1262,13 +1331,23 @@ body.nier-theme::before {
 }
 
 @keyframes spinRight {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spinLeft {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 /* =========================================
@@ -1298,7 +1377,7 @@ a,
 }
 
 /* =========================================
-   RESPONSIVO
+   RESPONSIVO Y MEDIA QUERIES (AL FINAL DEL ARCHIVO)
    ========================================= */
 
 @media (max-width: 950px) {
@@ -1322,16 +1401,46 @@ a,
 }
 
 @media (max-width: 850px) {
-  .projects-body {
-    grid-template-columns: 1fr;
-    gap: 14px;
+
+  /* 1. Ocultar la tarjeta lateral */
+  .nier-status-card {
+    display: none !important;
   }
+
+  /* 2. Activar la barra fija de CV en la parte inferior */
+  .mobile-cv-bottom-bar {
+    display: flex !important;
+    justify-content: center;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    padding: 10px 16px;
+    background: rgba(218, 212, 187, 0.98) !important;
+    border-top: 2px solid #57544a;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    z-index: 99999 !important;
+    box-sizing: border-box;
+  }
+
+  /* 3. Margen inferior para que nada quede tapado por la barra fija */
+  body.nier-theme {
+    padding-bottom: 80px !important;
+  }
+
+  .nier-screen {
+    padding-bottom: 70px !important;
+  }
+
   .detail-header {
     flex-direction: column;
   }
+
   .detail-actions {
     width: 100%;
   }
+
   .action-btn {
     flex: 1;
     justify-content: center;
@@ -1342,13 +1451,16 @@ a,
   .about-meta-grid {
     grid-template-columns: 1fr;
   }
+
   .about-highlights {
     grid-template-columns: 1fr;
   }
+
   .contact-body {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -1357,6 +1469,7 @@ a,
 @media (max-width: 600px) {
   body.nier-theme {
     padding: 12px 14px;
+    padding-bottom: 85px !important;
   }
 
   .nier-nav .nav-list {
@@ -1378,7 +1491,18 @@ a,
   }
 
   .nier-main-container {
-    height: 430px;
+    height: 470px;
+  }
+
+  .btn-cv-tactical-mobile {
+    max-width: 380px;
+    width: 100%;
+  }
+
+  .btn-cv-tactical-mobile:active {
+    background: var(--nier-dark-hover);
+    border-color: var(--nier-accent);
+    box-shadow: 0 0 10px var(--nier-accent-glow);
   }
 
   .nier-footer {
@@ -1386,100 +1510,4 @@ a,
     gap: 8px;
     text-align: center;
   }
-}
-
-/* AJUSTES FINALES CV Y LATERAL */
-.cv-action-area {
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px dashed rgba(78, 75, 66, 0.4);
-}
-
-.btn-cv-tactical {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px 14px;
-  background: var(--nier-dark);
-  color: var(--nier-light-text);
-  border: 1px solid var(--nier-dark);
-  border-left: 4px solid var(--nier-accent);
-  text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  transition: all 0.2s ease;
-}
-
-.btn-cv-tactical:hover {
-  background: var(--nier-dark-hover);
-  border-color: var(--nier-accent);
-  box-shadow: 0 0 10px var(--nier-accent-glow), 2px 2px 0 rgba(78, 75, 66, 0.3);
-  transform: translateY(-2px);
-}
-
-.btn-cv-tactical .cv-icon {
-  color: var(--nier-accent);
-  font-size: 1.1rem;
-}
-
-.telemetry-row {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 6px 8px;
-  background: rgba(78, 75, 66, 0.05);
-  border-left: 2px solid var(--nier-dark);
-}
-
-.telemetry-label {
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  color: var(--nier-muted);
-  font-weight: bold;
-}
-
-.telemetry-value {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--nier-dark);
-}
-
-/* LISTADO ESQUEMATIZADO DE PROYECTOS */
-.project-desc-block {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 4px 0;
-}
-
-.desc-bullet {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  background: rgba(78, 75, 66, 0.04);
-  border-left: 2px solid var(--nier-dark);
-  padding: 6px 10px;
-}
-
-.bullet-tag {
-  display: inline-block;
-  align-self: flex-start;
-  background: var(--nier-dark);
-  color: var(--nier-light-text);
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 1.5px;
-  font-weight: 700;
-  padding: 1px 6px;
-  margin-bottom: 2px;
-}
-
-.desc-bullet p {
-  font-size: 0.88rem;
-  line-height: 1.35;
-  color: var(--nier-dark);
-  margin: 0;
 }

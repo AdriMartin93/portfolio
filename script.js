@@ -1,4 +1,4 @@
-const { createApp, ref, computed, onMounted } = Vue;
+const { createApp, ref, computed, onMounted, nextTick } = Vue;
 
 createApp({
   setup() {
@@ -128,6 +128,14 @@ createApp({
       if (proyectoActivoId.value !== id) {
         proyectoActivoId.value = id;
         reproducirSonidoClick();
+        
+        // Espera a que se renderice el nuevo proyecto y sube el scroll al inicio del contenedor
+        nextTick(() => {
+          const panelProyectos = document.querySelector('.projects-accordion-body');
+          if (panelProyectos) {
+            panelProyectos.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
       }
     }
 
@@ -201,8 +209,7 @@ createApp({
       }
     }
 
-    // DESCARGA DIRECTA DE CV
-    // DESCARGA FORZADA DE CV (TIPO BINARIO PURO)
+    // DESCARGA DIRECTA DE CV (TIPO BINARIO PURO)
     async function descargarCV(e) {
       if (e) {
         e.preventDefault();
@@ -215,7 +222,6 @@ createApp({
         if (!respuesta.ok) throw new Error('Error al leer el archivo');
 
         const arrayBuffer = await respuesta.arrayBuffer();
-        // Al marcarlo como octet-stream, el navegador NO PUEDE abrirlo en el visor de PDFs
         const blob = new Blob([arrayBuffer], { type: 'application/octet-stream' });
         const urlBlob = window.URL.createObjectURL(blob);
 
@@ -230,7 +236,6 @@ createApp({
           window.URL.revokeObjectURL(urlBlob);
         }, 200);
       } catch (err) {
-        // Si estás en local con file:/// y fetch falla, al menos que lo abra en pestaña nueva sin sacarte de tu web
         const fallback = document.createElement('a');
         fallback.href = './docs/CV_Adrian_Martin.pdf';
         fallback.download = 'CV_Adrian_Martin.pdf';
@@ -281,11 +286,19 @@ createApp({
       } catch (e) {}
     }
 
-    // CAMBIO DE PESTAÑAS Y SCROLL INTELIGENTE
+    // CAMBIO DE PESTAÑAS Y RESET DE SCROLL
     function cambiarSeccion(nombreSeccion) {
       if (seccionActiva.value !== nombreSeccion) {
         seccionActiva.value = nombreSeccion;
         reproducirSonidoClick();
+
+        // Resetea el scroll de los paneles internos al inicio
+        nextTick(() => {
+          document.querySelectorAll('.panel-body').forEach(panel => {
+            panel.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       }
     }
 
