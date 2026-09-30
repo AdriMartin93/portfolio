@@ -196,6 +196,7 @@ body.nier-theme::before {
   padding: 24px;
   flex: 1;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .panel-body h3 {
@@ -415,7 +416,6 @@ body.nier-theme::before {
     opacity: 0;
     transform: translateY(-6px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -423,20 +423,38 @@ body.nier-theme::before {
 }
 
 /* =========================================
-   SECCIÓN DE PROYECTOS (ESTILO ACORDEÓN INLINE)
+   PROYECTOS: SISTEMA HÍBRIDO (ESCRITORIO / MÓVIL)
    ========================================= */
 
-.projects-accordion-body {
+/* Por defecto en pantalla grande (> 850px): Dos columnas */
+.projects-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  height: 100%;
   padding: 18px 24px;
 }
 
-.projects-accordion-list {
+.projects-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
-.project-accordion-item {
+.projects-subhead {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--nier-muted);
+  font-weight: bold;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -453,6 +471,7 @@ body.nier-theme::before {
 
 .project-tab-card:hover {
   background: rgba(78, 75, 66, 0.15);
+  transform: translateX(4px);
 }
 
 .project-tab-card.active {
@@ -488,23 +507,20 @@ body.nier-theme::before {
   letter-spacing: 1px;
 }
 
-.accordion-arrow {
-  font-size: 0.8rem;
-  color: var(--nier-accent);
+/* En escritorio se oculta la flechita y el acordeón inline */
+.accordion-arrow-mobile,
+.inline-detail-mobile {
+  display: none !important;
 }
 
-/* Ficha desplegada justo debajo del botón */
-.project-details-view.inline-detail {
+/* Visor derecho de escritorio */
+.desktop-detail-view {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: rgba(78, 75, 66, 0.04);
+  background: rgba(78, 75, 66, 0.03);
   padding: 16px 20px;
-  border-left: 3px solid var(--nier-accent);
-  border-right: 1px solid rgba(78, 75, 66, 0.2);
-  border-bottom: 1px solid rgba(78, 75, 66, 0.2);
-  margin-bottom: 8px;
-  animation: fadeInPanel 0.25s ease-out;
+  border: 1px solid rgba(78, 75, 66, 0.2);
 }
 
 .detail-header {
@@ -688,7 +704,7 @@ body.nier-theme::before {
 }
 
 /* =========================================
-   PANEL LATERAL DINÁMICO & TELEMETRÍA (COLUMNA DERECHA)
+   PANEL LATERAL DINÁMICO & CV ESCRITORIO
    ========================================= */
 
 .nier-status-card {
@@ -762,7 +778,6 @@ body.nier-theme::before {
     opacity: 0;
     transform: translateY(4px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -896,12 +911,10 @@ body.nier-theme::before {
     transform: scale(0.9);
     opacity: 0.7;
   }
-
   50% {
     transform: scale(1.25);
     opacity: 1;
   }
-
   100% {
     transform: scale(0.9);
     opacity: 0.7;
@@ -954,26 +967,14 @@ body.nier-theme::before {
 }
 
 .btn-cv-tactical-mobile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
   max-width: 380px;
-  background-color: #4b483f;
-  color: #dad4bb;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-  text-decoration: none;
-  padding: 11px 18px;
-  border: 1px solid #736d5c;
-  box-shadow: inset 0 0 0 1px #2b2924;
+  width: 100%;
 }
 
 .btn-cv-tactical-mobile:active {
-  background-color: #2b2924;
-  color: #ffffff;
+  background: var(--nier-dark-hover);
+  border-color: var(--nier-accent);
+  box-shadow: 0 0 10px var(--nier-accent-glow);
 }
 
 /* =========================================
@@ -1150,6 +1151,18 @@ body.nier-theme::before {
   gap: 8px;
   transition: all 0.15s ease;
   margin-top: 4px;
+}
+
+.btn-envelope-icon {
+  stroke: var(--nier-accent);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+
+.submit-btn:hover .btn-envelope-icon {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 0 5px var(--nier-accent-glow));
 }
 
 .submit-btn:hover {
@@ -1334,7 +1347,6 @@ body.nier-theme::before {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -1344,14 +1356,13 @@ body.nier-theme::before {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(-360deg);
   }
 }
 
 /* =========================================
-   PUNTERO GAMING // RETÍCULA TÁCTICA HUD
+   PUNTERO HUD
    ========================================= */
 
 html,
@@ -1377,7 +1388,7 @@ a,
 }
 
 /* =========================================
-   RESPONSIVO Y MEDIA QUERIES (AL FINAL DEL ARCHIVO)
+   RESPONSIVO Y MEDIA QUERIES (BREAKPOINTS)
    ========================================= */
 
 @media (max-width: 950px) {
@@ -1401,7 +1412,6 @@ a,
 }
 
 @media (max-width: 850px) {
-
   /* 1. Ocultar la tarjeta lateral */
   .nier-status-card {
     display: none !important;
@@ -1431,6 +1441,38 @@ a,
 
   .nier-screen {
     padding-bottom: 70px !important;
+  }
+
+  /* 4. En móvil pasamos los proyectos a 1 sola columna con acordeón */
+  .projects-body {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  /* Ocultamos el visor descolgado de escritorio */
+  .desktop-detail-view {
+    display: none !important;
+  }
+
+  /* Mostramos el acordeón desplegable y la flecha */
+  .accordion-arrow-mobile {
+    display: inline-block !important;
+    font-size: 0.8rem;
+    color: var(--nier-accent);
+  }
+
+  .inline-detail-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(78, 75, 66, 0.04);
+    padding: 14px 16px;
+    border-left: 3px solid var(--nier-accent);
+    border-right: 1px solid rgba(78, 75, 66, 0.2);
+    border-bottom: 1px solid rgba(78, 75, 66, 0.2);
+    margin-bottom: 8px;
+    animation: fadeInPanel 0.25s ease-out;
   }
 
   .detail-header {
@@ -1495,14 +1537,8 @@ a,
   }
 
   .btn-cv-tactical-mobile {
-    max-width: 380px;
-    width: 100%;
-  }
-
-  .btn-cv-tactical-mobile:active {
-    background: var(--nier-dark-hover);
-    border-color: var(--nier-accent);
-    box-shadow: 0 0 10px var(--nier-accent-glow);
+    font-size: 0.85rem;
+    padding: 10px 14px;
   }
 
   .nier-footer {

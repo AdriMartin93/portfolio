@@ -250,99 +250,159 @@
                         </div>
                     </section>
 
-                    <!-- SECCIÓN 3: PROYECTOS (MODO ACORDEÓN INTEGRADO) -->
+                    <!-- SECCIÓN 3: PROYECTOS -->
                     <section class="content-panel slide-item">
                         <div class="panel-header-bar">
                             <span>REGISTRO DE PROYECTOS</span>
                             <span class="panel-tag">REPOSITORIOS: ACTIVOS</span>
                         </div>
-                        <div class="panel-body projects-accordion-body">
-                            <div class="projects-accordion-list">
-                                <div v-for="item in proyectos" :key="item.id" class="project-accordion-item">
+                        <div class="panel-body projects-body">
 
-                                    <!-- Cabecera del Proyecto (Clicable) -->
-                                    <div class="project-tab-card" :class="{ 'active': item.id === proyectoActivoId }"
-                                        @click="seleccionarProyecto(item.id)">
-                                        <div class="tab-meta">
-                                            <span class="tab-id">{{ item.numero }}</span>
-                                            <span class="tab-cat">{{ item.categoria }}</span>
-                                        </div>
-                                        <div class="tab-title-row">
-                                            <span class="tab-title">{{ item.nombre }}</span>
-                                            <span class="accordion-arrow">{{ item.id === proyectoActivoId ? '▼' : '▶'
-                                                }}</span>
-                                        </div>
-                                    </div>
+                            <!-- Columna Izquierda (en móvil actúa de acordeón) -->
+                            <div class="projects-sidebar">
+                                <span class="projects-subhead">LISTA DE PROYECTOS</span>
+                                <div class="projects-list">
+                                    <div v-for="item in proyectos" :key="item.id" class="project-wrapper">
 
-                                    <!-- Ficha Detallada: Se abre justo debajo del proyecto pulsado -->
-                                    <div class="project-details-view inline-detail" v-if="item.id === proyectoActivoId">
-                                        <div class="detail-header">
-                                            <div class="detail-title-group">
-                                                <span class="detail-code">ID: {{ item.numero }} · {{ item.categoria
+                                        <!-- Tarjeta botón de proyecto -->
+                                        <div class="project-tab-card"
+                                            :class="{ 'active': item.id === proyectoActivoId }"
+                                            @click="seleccionarProyecto(item.id)">
+                                            <div class="tab-meta">
+                                                <span class="tab-id">{{ item.numero }}</span>
+                                                <span class="tab-cat">{{ item.categoria }}</span>
+                                            </div>
+                                            <div class="tab-title-row">
+                                                <span class="tab-title">{{ item.nombre }}</span>
+                                                <span class="accordion-arrow-mobile">{{ item.id === proyectoActivoId ?
+                                                    '▼' : '▶' }}</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Acordeón inline: SOLO VISIBLE EN MÓVIL (< 850px) -->
+                                        <div class="project-details-view inline-detail-mobile"
+                                            v-if="item.id === proyectoActivoId">
+                                            <div class="detail-header">
+                                                <div class="detail-title-group">
+                                                    <span class="detail-code">ID: {{ item.numero }} · {{ item.categoria
+                                                        }}</span>
+                                                    <h3 class="detail-title">{{ item.nombre }}</h3>
+                                                    <p class="detail-subtitle">{{ item.subtitulo }}</p>
+                                                </div>
+
+                                                <div class="detail-actions">
+                                                    <a v-if="item.demoUrl" :href="item.demoUrl" target="_blank"
+                                                        rel="noopener noreferrer" class="action-btn render-btn">
+                                                        <span>VER WEB</span>
+                                                        <span class="btn-arrow">↗</span>
+                                                    </a>
+                                                    <a v-if="item.githubBack" :href="item.githubBack" target="_blank"
+                                                        rel="noopener noreferrer" class="action-btn github-btn">
+                                                        <span>BACKEND [GIT]</span>
+                                                        <span class="btn-arrow">↗</span>
+                                                    </a>
+                                                    <a v-if="item.githubFront" :href="item.githubFront" target="_blank"
+                                                        rel="noopener noreferrer" class="action-btn github-btn">
+                                                        <span>FRONTEND [GIT]</span>
+                                                        <span class="btn-arrow">↗</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <hr class="nier-subline">
+
+                                            <div class="project-preview-frame">
+                                                <img :src="item.imagen" :alt="item.nombre" class="preview-img">
+                                                <div class="frame-corner top-left"></div>
+                                                <div class="frame-corner bottom-right"></div>
+                                            </div>
+
+                                            <div class="project-desc-block">
+                                                <div class="desc-bullet">
+                                                    <span class="bullet-tag">[MOTIVACIÓN]</span>
+                                                    <p>{{ item.detalles.origen }}</p>
+                                                </div>
+                                                <div class="desc-bullet">
+                                                    <span class="bullet-tag">[FUNCIONALIDAD]</span>
+                                                    <p>{{ item.detalles.queHace }}</p>
+                                                </div>
+                                                <div class="desc-bullet">
+                                                    <span class="bullet-tag">[ARQUITECTURA]</span>
+                                                    <p>{{ item.detalles.stackTecnico }}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="project-tech-tags">
+                                                <span class="tag-badge" v-for="tec in item.stack" :key="tec">{{ tec
                                                     }}</span>
-                                                <h3 class="detail-title">{{ item.nombre }}</h3>
-                                                <p class="detail-subtitle">{{ item.subtitulo }}</p>
-                                            </div>
-
-                                            <div class="detail-actions">
-                                                <!-- Botón Deploy Render -->
-                                                <a v-if="item.demoUrl" :href="item.demoUrl" target="_blank"
-                                                    rel="noopener noreferrer" class="action-btn render-btn">
-                                                    <span>VER WEB</span>
-                                                    <span class="btn-arrow">↗</span>
-                                                </a>
-
-                                                <!-- Botón Repo Backend -->
-                                                <a v-if="item.githubBack" :href="item.githubBack" target="_blank"
-                                                    rel="noopener noreferrer" class="action-btn github-btn">
-                                                    <span>BACKEND [GIT]</span>
-                                                    <span class="btn-arrow">↗</span>
-                                                </a>
-
-                                                <!-- Botón Repo Frontend -->
-                                                <a v-if="item.githubFront" :href="item.githubFront" target="_blank"
-                                                    rel="noopener noreferrer" class="action-btn github-btn">
-                                                    <span>FRONTEND [GIT]</span>
-                                                    <span class="btn-arrow">↗</span>
-                                                </a>
                                             </div>
                                         </div>
 
-                                        <hr class="nier-subline">
-
-                                        <!-- Visualizador de imagen adaptado a capturas completas -->
-                                        <div class="project-preview-frame">
-                                            <img :src="item.imagen" :alt="item.nombre" class="preview-img">
-                                            <div class="frame-corner top-left"></div>
-                                            <div class="frame-corner bottom-right"></div>
-                                        </div>
-
-                                        <!-- Explicación Técnica -->
-                                        <div class="project-desc-block">
-                                            <div class="desc-bullet">
-                                                <span class="bullet-tag">[MOTIVACIÓN]</span>
-                                                <p>{{ item.detalles.origen }}</p>
-                                            </div>
-                                            <div class="desc-bullet">
-                                                <span class="bullet-tag">[FUNCIONALIDAD]</span>
-                                                <p>{{ item.detalles.queHace }}</p>
-                                            </div>
-                                            <div class="desc-bullet">
-                                                <span class="bullet-tag">[ARQUITECTURA]</span>
-                                                <p>{{ item.detalles.stackTecnico }}</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Etiquetas del Stack completo usado -->
-                                        <div class="project-tech-tags">
-                                            <span class="tag-badge" v-for="tec in item.stack" :key="tec">
-                                                {{ tec }}
-                                            </span>
-                                        </div>
                                     </div>
-
                                 </div>
                             </div>
+
+                            <!-- Columna Derecha de escritorio: SOLO VISIBLE EN ESCRITORIO -->
+                            <div class="project-details-view desktop-detail-view" v-if="proyectoSeleccionado">
+                                <div class="detail-header">
+                                    <div class="detail-title-group">
+                                        <span class="detail-code">ID: {{ proyectoSeleccionado.numero }} · {{
+                                            proyectoSeleccionado.categoria }}</span>
+                                        <h3 class="detail-title">{{ proyectoSeleccionado.nombre }}</h3>
+                                        <p class="detail-subtitle">{{ proyectoSeleccionado.subtitulo }}</p>
+                                    </div>
+
+                                    <div class="detail-actions">
+                                        <a v-if="proyectoSeleccionado.demoUrl" :href="proyectoSeleccionado.demoUrl"
+                                            target="_blank" rel="noopener noreferrer" class="action-btn render-btn">
+                                            <span>VER WEB</span>
+                                            <span class="btn-arrow">↗</span>
+                                        </a>
+                                        <a v-if="proyectoSeleccionado.githubBack"
+                                            :href="proyectoSeleccionado.githubBack" target="_blank"
+                                            rel="noopener noreferrer" class="action-btn github-btn">
+                                            <span>BACKEND [GIT]</span>
+                                            <span class="btn-arrow">↗</span>
+                                        </a>
+                                        <a v-if="proyectoSeleccionado.githubFront"
+                                            :href="proyectoSeleccionado.githubFront" target="_blank"
+                                            rel="noopener noreferrer" class="action-btn github-btn">
+                                            <span>FRONTEND [GIT]</span>
+                                            <span class="btn-arrow">↗</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <hr class="nier-subline">
+
+                                <div class="project-preview-frame">
+                                    <img :src="proyectoSeleccionado.imagen" :alt="proyectoSeleccionado.nombre"
+                                        class="preview-img">
+                                    <div class="frame-corner top-left"></div>
+                                    <div class="frame-corner bottom-right"></div>
+                                </div>
+
+                                <div class="project-desc-block">
+                                    <div class="desc-bullet">
+                                        <span class="bullet-tag">[MOTIVACIÓN]</span>
+                                        <p>{{ proyectoSeleccionado.detalles.origen }}</p>
+                                    </div>
+                                    <div class="desc-bullet">
+                                        <span class="bullet-tag">[FUNCIONALIDAD]</span>
+                                        <p>{{ proyectoSeleccionado.detalles.queHace }}</p>
+                                    </div>
+                                    <div class="desc-bullet">
+                                        <span class="bullet-tag">[ARQUITECTURA]</span>
+                                        <p>{{ proyectoSeleccionado.detalles.stackTecnico }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="project-tech-tags">
+                                    <span class="tag-badge" v-for="tec in proyectoSeleccionado.stack" :key="tec">{{ tec
+                                        }}</span>
+                                </div>
+                            </div>
+
                         </div>
                     </section>
 
@@ -433,7 +493,14 @@
                                     </div>
 
                                     <button type="submit" class="submit-btn" :disabled="enviando">
-                                        <span class="btn-icon">▲</span>
+                                        <svg class="btn-envelope-icon" viewBox="0 0 24 24" width="18" height="18"
+                                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"
+                                            stroke-linejoin="miter">
+                                            <!-- Contorno geométrico del sobre -->
+                                            <rect x="2" y="4" width="20" height="15" rx="0" />
+                                            <!-- Pliegue angular del sobre -->
+                                            <path d="M2 5 L12 13 L22 5" />
+                                        </svg>
                                         <span>{{ enviando ? 'TRANSMITIENDO...' : 'ENVIAR MENSAJE' }}</span>
                                     </button>
 
