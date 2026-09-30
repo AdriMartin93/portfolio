@@ -321,8 +321,18 @@
 
                                 <!-- Explicación Técnica -->
                                 <div class="project-desc-block">
-                                    <span class="desc-label">ESPECIFICACIONES TÉCNICAS:</span>
-                                    <p>{{ proyectoSeleccionado.descripcion }}</p>
+                                    <div class="desc-bullet">
+                                        <span class="bullet-tag">[MOTIVACIÓN]</span>
+                                        <p>{{ proyectoSeleccionado.detalles.origen }}</p>
+                                    </div>
+                                    <div class="desc-bullet">
+                                        <span class="bullet-tag">[FUNCIONALIDAD]</span>
+                                        <p>{{ proyectoSeleccionado.detalles.queHace }}</p>
+                                    </div>
+                                    <div class="desc-bullet">
+                                        <span class="bullet-tag">[ARQUITECTURA]</span>
+                                        <p>{{ proyectoSeleccionado.detalles.stackTecnico }}</p>
+                                    </div>
                                 </div>
 
                                 <!-- Etiquetas del Stack completo usado -->

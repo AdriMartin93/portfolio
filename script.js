@@ -88,8 +88,12 @@ createApp({
         nombre: 'Gestor Resi',
         categoria: 'CLIENTE - SERVIDOR',
         subtitulo: 'Plataforma integral de gestión sociosanitaria y control clínico',
-        descripcion: 'Plataforma web diseñada a partir de mi experiencia previa en el sector sanitario para digitalizar la operativa integral de un centro residencial. Cuenta con arquitectura desacoplada: backend robusto en Java con Spring Boot para la lógica de negocio, control de acceso basado en roles (RBAC) y persistencia relacional. Permite la administración de expedientes de residentes, asignación de personal, control estricto de pautas de medicación y registro de partes diarios de enfermería, asegurando la trazabilidad clínica y operativa.',
-        stack: ['Java 17', 'Spring Boot', 'Spring Security', 'MySQL', 'JavaScript', 'Bootstrap'],
+        detalles: {
+          origen: 'Nace de mi experiencia en residencias: el software existente era poco intuitivo y estaba repleto de opciones innecesarias que entorpecían el día a día.',
+          queHace: 'Digitaliza expedientes de residentes, turnos de personal, pautas de medicación y partes diarios de enfermería con una interfaz directa y sin fricción.',
+          stackTecnico: 'Arquitectura desacoplada en Java (Spring Boot) con seguridad basada en roles (RBAC) y persistencia relacional optimizada en PostgreSQL.'
+        },
+        stack: ['Java 17', 'Spring Boot', 'Spring Security', 'PostgreSQL', 'JavaScript', 'Bootstrap'],
         imagen: './images/gestorResi.png',
         demoUrl: 'https://gestion-resi.onrender.com/',
         githubBack: 'https://github.com/AdriMartin93/gestion-residencia',
@@ -101,7 +105,11 @@ createApp({
         nombre: 'Omnitrack',
         categoria: 'MICROSERVICES - DDD',
         subtitulo: 'En desarrollo (Sin demo pública)',
-        descripcion: 'Plataforma integral para centralizar y calendarizar el seguimiento de series, películas, videojuegos, manga y anime. Permite a los usuarios organizar su actividad, recibir alertas y cuentas atrás para próximos estrenos, y participar en una comunidad compartiendo listas y reseñas. A nivel técnico, el sistema se divide en microservicios independientes construidos con Spring Boot y Spring Cloud, aplicando Arquitectura Hexagonal para desacoplar las reglas de negocio de la infraestructura. Combina MySQL y MongoDB según la naturaleza de cada dato, con una hoja de ruta orientada a eventos mediante Apache Kafka para soportar alta concurrencia.',
+        detalles: {
+          origen: 'Creado por necesidad personal: quería centralizar en un solo panel los estrenos y seguimiento de series, películas, videojuegos, manga y anime sin depender de búsquedas continuas.',
+          queHace: 'Permite registrar actividad, recibir alertas y cuentas atrás de lanzamientos, e interactuar con una comunidad compartiendo listas y reseñas.',
+          stackTecnico: 'Ecosistema de microservicios con Spring Boot y Spring Cloud bajo Arquitectura Hexagonal. Persistencia híbrida (MySQL + MongoDB) y mensajería orientada a eventos con Apache Kafka.'
+        },
         stack: ['Java 21', 'Spring Boot', 'Spring Cloud', 'Hexagonal Arch', 'MySQL', 'MongoDB', 'Apache Kafka'],
         imagen: './images/noFoto.png',
         demoUrl: null,

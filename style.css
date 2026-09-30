@@ -1446,3 +1446,40 @@ a,
   font-weight: 600;
   color: var(--nier-dark);
 }
+
+/* LISTADO ESQUEMATIZADO DE PROYECTOS */
+.project-desc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.desc-bullet {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(78, 75, 66, 0.04);
+  border-left: 2px solid var(--nier-dark);
+  padding: 6px 10px;
+}
+
+.bullet-tag {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--nier-dark);
+  color: var(--nier-light-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  margin-bottom: 2px;
+}
+
+.desc-bullet p {
+  font-size: 0.88rem;
+  line-height: 1.35;
+  color: var(--nier-dark);
+  margin: 0;
+}
