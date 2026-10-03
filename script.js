@@ -89,8 +89,8 @@ createApp({
         categoria: 'CLIENTE - SERVIDOR',
         subtitulo: 'Plataforma integral de gestión sociosanitaria y control clínico',
         detalles: {
-          origen: 'Nace de mi experiencia en residencias: el software existente era tosco,poco intuitivo, y estaba repleto de opciones innecesarias que entorpecían el día a día.',
-          queHace: 'Digitaliza expedientes de residentes, turnos de personal, pautas de medicación y partes diarios de enfermería con una interfaz directa y sin fricción.',
+          origen: 'El software habitual en residencias suele ser tosco, confuso y tan sobrecargado de opciones redundantes que el personal necesita formaci´on previa solo para tareas cotidianas.',
+          queHace: 'Diseñé una plataforma directa e intuitiva que elimina la fricción, permitiendo registrar pautas de medicación, incidencias clínicas y partes diarios en pocos clics.',
           stackTecnico: 'Arquitectura desacoplada en Java (Spring Boot) con seguridad basada en roles (RBAC) y persistencia relacional optimizada en PostgreSQL.'
         },
         stack: ['Java 17', 'Spring Boot', 'Spring Security', 'PostgreSQL', 'JavaScript', 'Bootstrap'],
@@ -106,7 +106,7 @@ createApp({
         categoria: 'MICROSERVICES - DDD',
         subtitulo: 'En desarrollo (Sin demo pública)',
         detalles: {
-          origen: 'Creado por necesidad personal: quería centralizar en un solo panel los estrenos y seguimiento de series, películas, videojuegos, manga y anime sin depender de búsquedas continuas.',
+          origen: 'Nació para uso personal: con tantas plataformas y servicios lanzando novedades constantemente, me resultaba un caos seguir fechas de estreno y el progreso de mis series, mangas y videojuegos. Quería tenerlo todo centralizado en un solo lugar.',
           queHace: 'Permite registrar actividad, recibir alertas y cuentas atrás de lanzamientos, e interactuar con una comunidad compartiendo listas y reseñas.',
           stackTecnico: 'Ecosistema de microservicios con Spring Boot y Spring Cloud bajo Arquitectura Hexagonal. Persistencia híbrida (MySQL + MongoDB) y mensajería orientada a eventos con Apache Kafka.'
         },
@@ -128,7 +128,7 @@ createApp({
       if (proyectoActivoId.value !== id) {
         proyectoActivoId.value = id;
         reproducirSonidoClick();
-        
+
         // Espera a que se renderice el nuevo proyecto y sube el scroll al inicio del contenedor
         nextTick(() => {
           const panelProyectos = document.querySelector('.projects-accordion-body');
@@ -230,7 +230,7 @@ createApp({
         link.download = 'CV_Adrian_Martin.pdf';
         document.body.appendChild(link);
         link.click();
-        
+
         setTimeout(() => {
           document.body.removeChild(link);
           window.URL.revokeObjectURL(urlBlob);
@@ -257,7 +257,7 @@ createApp({
     function despertarAudio() {
       const ctx = getAudioContext();
       if (ctx.state === 'suspended') {
-        ctx.resume().catch(() => {});
+        ctx.resume().catch(() => { });
       }
     }
 
@@ -283,7 +283,7 @@ createApp({
 
         osc.start();
         osc.stop(ctx.currentTime + 0.08);
-      } catch (e) {}
+      } catch (e) { }
     }
 
     // CAMBIO DE PESTAÑAS Y RESET DE SCROLL
