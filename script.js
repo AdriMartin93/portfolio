@@ -89,7 +89,7 @@ createApp({
         categoria: 'CLIENTE - SERVIDOR',
         subtitulo: 'Plataforma integral de gestión sociosanitaria y control clínico',
         detalles: {
-          origen: 'El software habitual en residencias suele ser tosco, confuso y tan sobrecargado de opciones redundantes que el personal necesita formaci´on previa solo para tareas cotidianas.',
+          origen: 'El software habitual en residencias suele ser tosco, confuso y tan sobrecargado de opciones redundantes que el personal necesita formación previa solo para tareas cotidianas.',
           queHace: 'Diseñé una plataforma directa e intuitiva que elimina la fricción, permitiendo registrar pautas de medicación, incidencias clínicas y partes diarios en pocos clics.',
           stackTecnico: 'Arquitectura desacoplada en Java (Spring Boot) con seguridad basada en roles (RBAC) y persistencia relacional optimizada en PostgreSQL.'
         },
